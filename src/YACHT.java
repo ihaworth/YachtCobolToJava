@@ -1,11 +1,7 @@
-import java.io.UnsupportedEncodingException;
-import jp.osscons.opensourcecobol.libcobj.*;
 import jp.osscons.opensourcecobol.libcobj.common.*;
 import jp.osscons.opensourcecobol.libcobj.data.*;
 import jp.osscons.opensourcecobol.libcobj.exceptions.*;
-import jp.osscons.opensourcecobol.libcobj.termio.*;
 import jp.osscons.opensourcecobol.libcobj.call.*;
-import jp.osscons.opensourcecobol.libcobj.file.*;
 import jp.osscons.opensourcecobol.libcobj.ui.*;
 import java.util.Optional;
 
@@ -753,7 +749,7 @@ public class YACHT implements CobolRunnable {
     return new CobolDataStorage(bytes);
   }
 
-  public int calculate(String dice, String category) {
+  public int score(String dice, String category) {
     run_module(1);
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
