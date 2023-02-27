@@ -36,8 +36,8 @@
        WHEN "sixes"           MOVE 6 TO WS-NUMBER PERFORM SCORE_NUMBERS
        WHEN "full house"      PERFORM SCORE-FULL-HOUSE
        WHEN "four of a kind"  PERFORM SCORE-FOUR-OF-A-KIND
-       WHEN "little straight" MOVE 6 TO WS-ABSENT PERFORM SCORE-STRIGHT
-       WHEN "big straight"    MOVE 1 TO WS-ABSENT PERFORM SCORE-STRIGHT
+       WHEN "little straight" MOVE 6 TO WS-ABSENT PERFORM SCORE-STRAIGHT
+       WHEN "big straight"    MOVE 1 TO WS-ABSENT PERFORM SCORE-STRAIGHT
        WHEN "choice"          PERFORM SCORE-ALL-DICE
        END-EVALUATE
        .
@@ -75,7 +75,7 @@
           END-PERFORM
        END-IF
        .
-       SCORE-STRIGHT.
+       SCORE-STRAIGHT.
        PERFORM COUNT-DISTINCT-DICE
        IF WS-NUM-DISTINCT-DICE = 5
           PERFORM CHECK-VALUE-ABSENT
