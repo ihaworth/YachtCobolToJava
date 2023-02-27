@@ -269,7 +269,7 @@ public class YACHT implements CobolRunnable {
                                   }
         }
 
-        return Optional.of(contList[4]);
+        return Optional.empty();
       }
     },
     /* SCORE-YACHT */
