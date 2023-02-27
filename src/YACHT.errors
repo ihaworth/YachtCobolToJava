@@ -1,0 +1,18 @@
+# cobj YACHT.cobol
+YACHT.cobol:11: Error: Level 01 item 'WS-DIE' cannot have OCCURS clause
+YACHT.cobol:13: Error: Level 01 item 'WS-DISTINCT-DICE' cannot have OCCURS clause
+YACHT.cobol:14: Error: Level 01 item 'WS-DISTINCT-DICE-COUNT' cannot have OCCURS clause
+YACHT.cobol: In paragraph 'SCORE-YACHT':
+YACHT.cobol:44: Error: 'WS-NUM-DISTINCT-DICE' undefined
+YACHT.cobol: In paragraph 'SCORE-FULL-HOUSE':
+YACHT.cobol:60: Error: 'WS-NUM-DISTINCT-DICE' undefined
+YACHT.cobol: In paragraph 'SCORE-FOUR-OF-A-KIND':
+YACHT.cobol:68: Error: 'WS-NUM-DISTINCT-DICE' undefined
+YACHT.cobol:69: Error: 'WS-NUM-DISTINCT-DICE' undefined
+YACHT.cobol: In paragraph 'SCORE-STRIGHT':
+YACHT.cobol:78: Error: 'WS-NUM-DISTINCT-DICE' undefined
+YACHT.cobol: In paragraph 'CHECK-VALUE-ABSENT':
+YACHT.cobol:92: Error: PERFORM statement not terminated by END-PERFORM
+YACHT.cobol:92: Error: syntax error, unexpected Literal
+YACHT.cobol:92: Error: Unknown statement 'Y'
+YACHT.cobol:92: Error: Unknown statement 'Y'
