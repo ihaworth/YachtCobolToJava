@@ -40,6 +40,7 @@
        WHEN "big straight"    MOVE 1 TO WS-ABSENT PERFORM SCORE-STRAIGHT
        WHEN "choice"          PERFORM SCORE-ALL-DICE
        END-EVALUATE
+       EXIT PROGRAM
        .
        SCORE-YACHT.
        PERFORM COUNT-DISTINCT-DICE
