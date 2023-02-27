@@ -8,184 +8,202 @@ class YACHTTest {
         YACHT yacht = new YACHT();
         int result = yacht.calculate("55555", "yacht");
         assertEquals(50, result);
-//        MOVE 55555 TO WS-DICE
-//        MOVE 'yacht' TO WS-CATEGORY
-//        PERFORM YACHT
-//        EXPECT WS-RESULT = 50
     }
-    /*
-    TestCase "Yacht"
-	MOVE 55555 TO WS-DICE
-	MOVE 'yacht' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 50
 
-    TestCase "Not Yacht"
-	MOVE 13325 TO WS-DICE
-	MOVE 'yacht' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Not_Yacht() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("13325", "yacht");
+        assertEquals(0, result);
+    }
 
-    TestCase "Ones"
-	MOVE 11135 TO WS-DICE
-	MOVE 'ones' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 3
+    @Test
+    void Ones() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("11135", "ones");
+        assertEquals(3, result);
+    }
 
-    TestCase "Ones, out of order"
-	MOVE 31151 TO WS-DICE
-	MOVE 'ones' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 3
+    @Test
+    void Ones_out_of_order() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("31151", "ones");
+        assertEquals(3, result);
+    }
 
-    TestCase "No ones"
-	MOVE 43655 TO WS-DICE
-	MOVE 'ones' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void No_ones() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("43655", "ones");
+        assertEquals(0, result);
+    }
 
-    TestCase "Twos"
-	MOVE 23456 TO WS-DICE
-	MOVE 'twos' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 2
+    @Test
+    void Twos() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("23456", "twos");
+        assertEquals(2, result);
+    }
 
-    TestCase "Fours"
-	MOVE 14141 TO WS-DICE
-	MOVE 'fours' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 8
+    @Test
+    void Fours() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("14141", "fours");
+        assertEquals(8, result);
+    }
 
-    TestCase "Yacht counted as threes"
-	MOVE 33333 TO WS-DICE
-	MOVE 'threes' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 15
+    @Test
+    void Yacht_counted_as_threes() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("33333", "threes");
+        assertEquals(15, result);
+    }
 
-    TestCase "Yacht of 3s counted as fives"
-	MOVE 33333 TO WS-DICE
-	MOVE 'fives' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Yacht_of_3s_counted_as_fives() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("33333", "fives");
+        assertEquals(0, result);
+    }
 
-    TestCase "Fives"
-	MOVE 15353 TO WS-DICE
-	MOVE 'fives' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 10
+    @Test
+    void Fives() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("15353", "fives");
+        assertEquals(10, result);
+    }
 
-    TestCase "Sixes"
-	MOVE 23456 TO WS-DICE
-	MOVE 'sixes' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 6
+    @Test
+    void Sixes() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("23456", "sixes");
+        assertEquals(6, result);
+    }
 
-    TestCase "Full house two small, three big"
-	MOVE 22444 TO WS-DICE
-	MOVE 'full house' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 16
+    @Test
+    void Full_house_two_small_three_big() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("22444", "full house");
+        assertEquals(16, result);
+    }
 
-    TestCase "Full house three small, two big"
-	MOVE 53353 TO WS-DICE
-	MOVE 'full house' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 19
+    @Test
+    void Full_house_three_small_two_big() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("53353", "full house");
+        assertEquals(19, result);
+    }
 
-    TestCase "Two pair is not a full house"
-	MOVE 22445 TO WS-DICE
-	MOVE 'full house' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Two_pair_is_not_a_full_house() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("22445", "full house");
+        assertEquals(0, result);
+    }
 
-    TestCase "Four of a kind is not a full house"
-	MOVE 14444 TO WS-DICE
-	MOVE 'full house' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Four_of_a_kind_is_not_a_full_house() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("14444", "full house");
+        assertEquals(0, result);
+    }
 
-    TestCase "Yacht is not a full house"
-	MOVE 22222 TO WS-DICE
-	MOVE 'full house' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Yacht_is_not_a_full_house() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("22222", "full house");
+        assertEquals(0, result);
+    }
 
-    TestCase "Four of a Kind"
-	MOVE 66466 TO WS-DICE
-	MOVE 'four of a kind' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 24
+    @Test
+    void Four_of_a_Kind() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("66466", "four of a kind");
+        assertEquals(24, result);
+    }
 
-    TestCase "Yacht can be scored as Four of a Kind"
-	MOVE 33333 TO WS-DICE
-	MOVE 'four of a kind' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 12
+    @Test
+    void Yacht_can_be_scored_as_Four_of_a_Kind() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("33333", "four of a kind");
+        assertEquals(12, result);
+    }
 
-    TestCase "Full house is not Four of a Kind"
-	MOVE 33355 TO WS-DICE
-	MOVE 'four of a kind' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Full_house_is_not_Four_of_a_Kind() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("33355", "four of a kind");
+        assertEquals(0, result);
+    }
 
-    TestCase "Little Straight"
-	MOVE 35412 TO WS-DICE
-	MOVE 'little straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 30
+    @Test
+    void Little_Straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("35412", "little straight");
+        assertEquals(30, result);
+    }
 
-    TestCase "Little Straight as Big Straight"
-	MOVE 12345 TO WS-DICE
-	MOVE 'big straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Little_Straight_as_Big_Straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("12345", "big straight");
+        assertEquals(0, result);
+    }
 
-    TestCase "Four in order but not a little straight"
-	MOVE 11234 TO WS-DICE
-	MOVE 'little straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Four_in_order_but_not_a_little_straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("11234", "little straight");
+        assertEquals(0, result);
+    }
 
-    TestCase "No pairs but not a little straight"
-	MOVE 12346 TO WS-DICE
-	MOVE 'little straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void No_pairs_but_not_a_little_straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("12346", "little straight");
+        assertEquals(0, result);
+    }
 
-    TestCase "Minimum is 1, maximum is 5, but not a little straight"
-	MOVE 11345 TO WS-DICE
-	MOVE 'little straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Minimum_is_1_maximum_is_5_but_not_a_little_straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("11345", "little straight");
+        assertEquals(0, result);
+    }
 
-    TestCase "Big Straight"
-	MOVE 46253 TO WS-DICE
-	MOVE 'big straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 30
+    @Test
+    void Big_Straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("46253", "big straight");
+        assertEquals(30, result);
+    }
 
-    TestCase "Big Straight as little straight"
-	MOVE 65432 TO WS-DICE
-	MOVE 'little straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void Big_Straight_as_little_straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("65432", "little straight");
+        assertEquals(0, result);
+    }
 
-    TestCase "No pairs but not a big straight"
-	MOVE 65431 TO WS-DICE
-	MOVE 'big straight' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 0
+    @Test
+    void No_pairs_but_not_a_big_straight() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("65431", "big straight");
+        assertEquals(0, result);
+    }
 
-    TestCase "Choice"
-	MOVE 33566 TO WS-DICE
-	MOVE 'choice' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 23
+    @Test
+    void Choice() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("33566", "choice");
+        assertEquals(23, result);
+    }
 
-    TestCase "Yacht as choice"
-	MOVE 22222 TO WS-DICE
-	MOVE 'choice' TO WS-CATEGORY
-	PERFORM YACHT
-	EXPECT WS-RESULT = 10
-     */
+    @Test
+    void Yacht_as_choice() {
+        YACHT yacht = new YACHT();
+        int result = yacht.calculate("22222", "choice");
+        assertEquals(10, result);
+    }
+
 }
