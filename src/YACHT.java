@@ -752,4 +752,14 @@ public class YACHT implements CobolRunnable {
   private static CobolDataStorage makeCobolDataStorage(byte ...bytes) {
     return new CobolDataStorage(bytes);
   }
+
+  public int calculate(String dice, String category) {
+    run_module(1);
+    b_WS_DICE.memcpy(dice, dice.length());
+    b_WS_CATEGORY.memcpy(category, category.length());
+
+    run_module(1);
+
+    return f_WS_RESULT.getInt();
+  }
 }
