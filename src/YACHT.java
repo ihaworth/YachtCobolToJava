@@ -141,26 +141,13 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreStraight(int absentRoll) {
-    /* YACHT.cobol:80: PERFORM */
-    /* PERFORM COUNT-DISTINCT-DICE */
     Map<Integer, Integer> diceCounts = countDistinctDice();
-    /* YACHT.cobol:81: IF */
+    if (diceCounts.size() == 5)
     {
-      if (diceCounts.size() == 5)
+      boolean valueIsAbsent = checkValueAbsent(absentRoll);
+      if (valueIsAbsent)
       {
-        /* YACHT.cobol:82: PERFORM */
-        /* PERFORM CHECK-VALUE-ABSENT */
-        boolean valueIsAbsent = checkValueAbsent(absentRoll);
-        /* YACHT.cobol:83: IF */
-        {
-          if (valueIsAbsent)
-          {
-            /* YACHT.cobol:84: MOVE */
-            {
-              b_WS_RESULT.setBytes ("30", 2);
-            }
-          }
-        }
+        b_WS_RESULT.setBytes ("30", 2);
       }
     }
   }
