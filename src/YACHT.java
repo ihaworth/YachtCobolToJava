@@ -137,118 +137,95 @@ public class YACHT implements CobolRunnable {
               }
               /* YACHT.cobol:29: EVALUATE */
               {
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("yacht"))
-                {
-                  /* YACHT.cobol:30: PERFORM */
-                  /* PERFORM SCORE-YACHT */
-                  CobolControl.perform(contList, 4).run();
-                }
-                else if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("ones"))
-                {
-                  /* YACHT.cobol:31: MOVE */
-                  {
-                    b_WS_NUMBER.setByte(49);
+                switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
+                  case "yacht" ->
+                    /* YACHT.cobol:30: PERFORM */
+                    /* PERFORM SCORE-YACHT */
+                          CobolControl.perform(contList, 4).run();
+                  case "ones" -> {
+                    /* YACHT.cobol:31: MOVE */
+                    {
+                      b_WS_NUMBER.setByte(49);
+                    }
+                    /* YACHT.cobol:31: PERFORM */
+                    /* PERFORM SCORE_NUMBERS */
+                    CobolControl.perform(contList, 5).run();
                   }
-                  /* YACHT.cobol:31: PERFORM */
-                  /* PERFORM SCORE_NUMBERS */
-                  CobolControl.perform(contList, 5).run();
-                }
-                else
-                  if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("twos")) {
-                  /* YACHT.cobol:32: MOVE */
-                  {
-                    b_WS_NUMBER.setByte(50);
+                  case "twos" -> {
+                    /* YACHT.cobol:32: MOVE */
+                    {
+                      b_WS_NUMBER.setByte(50);
+                    }
+                    /* YACHT.cobol:32: PERFORM */
+                    /* PERFORM SCORE_NUMBERS */
+                    CobolControl.perform(contList, 5).run();
                   }
-                  /* YACHT.cobol:32: PERFORM */
-                  /* PERFORM SCORE_NUMBERS */
-                  CobolControl.perform(contList, 5).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("threes"))
-                {
-                  /* YACHT.cobol:33: MOVE */
-                  {
-                    b_WS_NUMBER.setByte(51);
+                  case "threes" -> {
+                    /* YACHT.cobol:33: MOVE */
+                    {
+                      b_WS_NUMBER.setByte(51);
+                    }
+                    /* YACHT.cobol:33: PERFORM */
+                    /* PERFORM SCORE_NUMBERS */
+                    CobolControl.perform(contList, 5).run();
                   }
-                  /* YACHT.cobol:33: PERFORM */
-                  /* PERFORM SCORE_NUMBERS */
-                  CobolControl.perform(contList, 5).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("fours"))
-                {
-                  /* YACHT.cobol:34: MOVE */
-                  {
-                    b_WS_NUMBER.setByte(52);
+                  case "fours" -> {
+                    /* YACHT.cobol:34: MOVE */
+                    {
+                      b_WS_NUMBER.setByte(52);
+                    }
+                    /* YACHT.cobol:34: PERFORM */
+                    /* PERFORM SCORE_NUMBERS */
+                    CobolControl.perform(contList, 5).run();
                   }
-                  /* YACHT.cobol:34: PERFORM */
-                  /* PERFORM SCORE_NUMBERS */
-                  CobolControl.perform(contList, 5).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("fives"))
-                {
-                  /* YACHT.cobol:35: MOVE */
-                  {
-                    b_WS_NUMBER.setByte(53);
+                  case "fives" -> {
+                    /* YACHT.cobol:35: MOVE */
+                    {
+                      b_WS_NUMBER.setByte(53);
+                    }
+                    /* YACHT.cobol:35: PERFORM */
+                    /* PERFORM SCORE_NUMBERS */
+                    CobolControl.perform(contList, 5).run();
                   }
-                  /* YACHT.cobol:35: PERFORM */
-                  /* PERFORM SCORE_NUMBERS */
-                  CobolControl.perform(contList, 5).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("sixes"))
-                {
-                  /* YACHT.cobol:36: MOVE */
-                  {
-                    b_WS_NUMBER.setByte(54);
+                  case "sixes" -> {
+                    /* YACHT.cobol:36: MOVE */
+                    {
+                      b_WS_NUMBER.setByte(54);
+                    }
+                    /* YACHT.cobol:36: PERFORM */
+                    /* PERFORM SCORE_NUMBERS */
+                    CobolControl.perform(contList, 5).run();
                   }
-                  /* YACHT.cobol:36: PERFORM */
-                  /* PERFORM SCORE_NUMBERS */
-                  CobolControl.perform(contList, 5).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("full house"))
-                {
-                  /* YACHT.cobol:37: PERFORM */
-                  /* PERFORM SCORE-FULL-HOUSE */
-                  CobolControl.perform(contList, 6).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("four of a kind"))
-                {
-                  /* YACHT.cobol:38: PERFORM */
-                  /* PERFORM SCORE-FOUR-OF-A-KIND */
-                  CobolControl.perform(contList, 7).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("little straight"))
-                {
-                  /* YACHT.cobol:39: MOVE */
-                  {
-                    b_WS_ABSENT.setByte(54);
+                  case "full house" ->
+                    /* YACHT.cobol:37: PERFORM */
+                    /* PERFORM SCORE-FULL-HOUSE */
+                          CobolControl.perform(contList, 6).run();
+                  case "four of a kind" ->
+                    /* YACHT.cobol:38: PERFORM */
+                    /* PERFORM SCORE-FOUR-OF-A-KIND */
+                          CobolControl.perform(contList, 7).run();
+                  case "little straight" -> {
+                    /* YACHT.cobol:39: MOVE */
+                    {
+                      b_WS_ABSENT.setByte(54);
+                    }
+                    /* YACHT.cobol:39: PERFORM */
+                    /* PERFORM SCORE-STRIGHT */
+                    CobolControl.perform(contList, 8).run();
                   }
-                  /* YACHT.cobol:39: PERFORM */
-                  /* PERFORM SCORE-STRIGHT */
-                  CobolControl.perform(contList, 8).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("big straight"))
-                {
-                  /* YACHT.cobol:40: MOVE */
-                  {
-                    b_WS_ABSENT.setByte(49);
+                  case "big straight" -> {
+                    /* YACHT.cobol:40: MOVE */
+                    {
+                      b_WS_ABSENT.setByte(49);
+                    }
+                    /* YACHT.cobol:40: PERFORM */
+                    /* PERFORM SCORE-STRIGHT */
+                    CobolControl.perform(contList, 8).run();
                   }
-                  /* YACHT.cobol:40: PERFORM */
-                  /* PERFORM SCORE-STRIGHT */
-                  CobolControl.perform(contList, 8).run();
-                }
-                else
-                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("choice"))
-                {
-                  /* YACHT.cobol:41: PERFORM */
-                  /* PERFORM SCORE-ALL-DICE */
-                  CobolControl.perform(contList, 9).run();
+                  case "choice" ->
+                    /* YACHT.cobol:41: PERFORM */
+                    /* PERFORM SCORE-ALL-DICE */
+                          CobolControl.perform(contList, 9).run();
                 }
               }
               /* YACHT.cobol:43: EXIT */
