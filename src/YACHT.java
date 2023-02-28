@@ -225,7 +225,7 @@ public class YACHT implements CobolRunnable {
                   case "choice" ->
                     /* YACHT.cobol:41: PERFORM */
                     /* PERFORM SCORE-ALL-DICE */
-                          CobolControl.perform(contList, 9).run();
+                          scoreAllDice();
                 }
               }
               /* YACHT.cobol:43: EXIT */
@@ -271,20 +271,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-ALL-DICE */
           new CobolControl(9, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              /* YACHT.cobol:89: PERFORM */
-              b_I.set(1);
-              while ((long)(b_I.intValue() - 5) <= 0L)
-              {
-                {
-                  /* YACHT.cobol:90: ADD */
-                  {
-                    f_WS_RESULT.add (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)), a_2), 4);
-                  }
-                }
-                b_I.set(b_I.intValue() + 1);
-              }
-
-              return Optional.of(contList[10]);
+              return scoreAllDice();
             }
           },
           /* CHECK-VALUE-ABSENT */
@@ -324,6 +311,23 @@ public class YACHT implements CobolRunnable {
           },
           CobolControl.pure()
   };
+
+  private Optional<CobolControl> scoreAllDice() throws CobolStopRunException {
+    /* YACHT.cobol:89: PERFORM */
+    b_I.set(1);
+    while ((long)(b_I.intValue() - 5) <= 0L)
+    {
+      {
+        /* YACHT.cobol:90: ADD */
+        {
+          f_WS_RESULT.add (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)), a_2), 4);
+        }
+      }
+      b_I.set(b_I.intValue() + 1);
+    }
+
+    return Optional.of(contList[10]);
+  }
 
   private Optional<CobolControl> scoreStraight() throws CobolStopRunException, CobolGoBackException {
     /* YACHT.cobol:80: PERFORM */
