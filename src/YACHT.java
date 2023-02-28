@@ -140,7 +140,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreStraight(int absentRoll) throws CobolStopRunException {
+  private void scoreStraight(int absentRoll) {
     /* YACHT.cobol:80: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     Map<Integer, Integer> diceCounts = countDistinctDice();
@@ -250,7 +250,7 @@ public class YACHT implements CobolRunnable {
 
   }
 
-  private void scoreYacht() throws CobolStopRunException {
+  private void scoreYacht() {
     /* YACHT.cobol:46: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     Map<Integer, Integer> diceCounts = countDistinctDice();
@@ -266,7 +266,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private Map<Integer, Integer> countDistinctDice() throws CobolStopRunException {
+  private Map<Integer, Integer> countDistinctDice() {
     List<Integer> rolledDice = new ArrayList<>();
     for (int i = 1; i <= 5; i++)
     {
