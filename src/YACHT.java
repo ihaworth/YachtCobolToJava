@@ -278,32 +278,28 @@ public class YACHT implements CobolRunnable {
     /* YACHT.cobol:103: MOVE */
     b_WS_NUM_DISTINCT_DICE.setByte(48);
     /* YACHT.cobol:104: PERFORM */
-    b_J.set(1);
-    while ((long) (b_J.intValue() - 5) <= 0L)
+    for (int j = 1; j <= 5; j++)
     {
       /* YACHT.cobol:105: MOVE */
-      b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((b_J.intValue() - 1)).setByte(48);
+      b_WS_WORKING.getSubDataStorage(5).getSubDataStorage(j - 1).setByte(48);
       /* YACHT.cobol:106: MOVE */
-      b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((b_J.intValue() - 1)).setByte(48);
-      b_J.set(b_J.intValue() + 1);
+      b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(j - 1).setByte(48);
     }
     /* YACHT.cobol:109: PERFORM */
-    b_I.set(1);
-    while ((long)(b_I.intValue() - 5) <= 0L)
+    for (int i = 1; i <= 5; i++)
     {
       /* YACHT.cobol:110: MOVE */
       b_WS_DIE_PROCESSED.setByte('N');
       /* YACHT.cobol:111: PERFORM */
-      b_J.set(1);
-      while ((long)(Byte.toUnsignedInt(b_WS_DIE_PROCESSED.getByte(0)) - 'Y') != 0L)
+      for (int j = 1; (long)(Byte.toUnsignedInt(b_WS_DIE_PROCESSED.getByte(0)) - 'Y') != 0L; j++)
       {
         /* YACHT.cobol:112: IF */
-        if (((long)(b_J.intValue() - b_WS_NUM_DISTINCT_DICE.getNumdisp(1)) >  0L))
+        if (((long)(j - b_WS_NUM_DISTINCT_DICE.getNumdisp(1)) >  0L))
         {
           /* YACHT.cobol:113: MOVE */
-          b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((b_J.intValue() - 1)).setByte(b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).getByte(0));
+          b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)).setByte(b_WS_WORKING.getSubDataStorage(i - 1).getByte(0));
           /* YACHT.cobol:114: ADD */
-          CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((b_J.intValue() - 1)), a_2).add (c_12, 4);
+          CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)), a_2).add (c_12, 4);
           /* YACHT.cobol:115: ADD */
           f_WS_NUM_DISTINCT_DICE.add (c_12, 4);
           /* YACHT.cobol:116: MOVE */
@@ -312,17 +308,15 @@ public class YACHT implements CobolRunnable {
         else
         {
           /* YACHT.cobol:118: IF */
-          if (((long)b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).memcmp (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((b_J.intValue() - 1)), 1) == 0L))
+          if (((long)b_WS_WORKING.getSubDataStorage(i - 1).memcmp (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)), 1) == 0L))
           {
             /* YACHT.cobol:119: ADD */
-            CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((b_J.intValue() - 1)), a_2).add (c_12, 4);
+            CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)), a_2).add (c_12, 4);
             /* YACHT.cobol:120: MOVE */
             b_WS_DIE_PROCESSED.setByte('Y');
           }
         }
-        b_J.set(b_J.intValue() + 1);
       }
-      b_I.set(b_I.intValue() + 1);
     }
   }
 
