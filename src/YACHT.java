@@ -148,11 +148,11 @@ public class YACHT implements CobolRunnable {
                   case "full house"      -> scoreFullHouse();
                   case "four of a kind"  -> scoreFourOfAKind();
                   case "little straight" -> {
-                    b_WS_ABSENT.setByte(54);
+                    b_WS_ABSENT.setByte('6');
                     scoreStraight();
                   }
                   case "big straight" -> {
-                    b_WS_ABSENT.setByte(49);
+                    b_WS_ABSENT.setByte('1');
                     scoreStraight();
                   }
                   case "choice" ->
