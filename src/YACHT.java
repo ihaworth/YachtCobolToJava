@@ -128,7 +128,7 @@ public class YACHT implements CobolRunnable {
 
   private void scoreAllDice() throws CobolStopRunException {
     for (int i = 0; i < 5; i++) {
-      f_WS_RESULT.add(CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage((i)), a_2), 4);
+      f_WS_RESULT.add(CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(i), a_2), 4);
     }
   }
 
@@ -159,9 +159,9 @@ public class YACHT implements CobolRunnable {
 
   private boolean checkValueAbsent(int absentRoll) {
     b_WS_ABSENT.setByte('0' + absentRoll);
-    for (int i = 1; i <= 5; i++)
+    for (int i = 0; i < 5; i++)
     {
-      if (((long)b_WS_WORKING.getSubDataStorage((i - 1)).memcmp (b_WS_ABSENT, 1) == 0L)) {
+      if (((long)b_WS_WORKING.getSubDataStorage(i).memcmp (b_WS_ABSENT, 1) == 0L)) {
         return false;
       }
     }
