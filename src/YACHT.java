@@ -74,7 +74,6 @@ public class YACHT implements CobolRunnable {
       b_WS_NUMBER.setByte('0');
       b_WS_COUNT.setByte('0');
       b_WS_ABSENT.setByte('0');
-      b_WS_VALUE_ABSENT.setByte(' ');
       this.initialized = true;
     }
     /* PROCEDURE DIVISION */
@@ -160,13 +159,9 @@ public class YACHT implements CobolRunnable {
 
   private boolean checkValueAbsent(int absentRoll) {
     b_WS_ABSENT.setByte('0' + absentRoll);
-    /* YACHT.cobol:94: MOVE */
-    {
-      b_WS_VALUE_ABSENT.setByte('Y');
-    }
     /* YACHT.cobol:95: PERFORM */
     b_I.set(1);
-    while ((long)(b_I.intValue() - 5) <= 0L && (long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 'N') != 0L)
+    while ((long)(b_I.intValue() - 5) <= 0L)
     {
       {
         /* YACHT.cobol:97: IF */
@@ -175,7 +170,6 @@ public class YACHT implements CobolRunnable {
           {
             /* YACHT.cobol:98: MOVE */
             {
-              b_WS_VALUE_ABSENT.setByte('N');
               return false;
             }
           }
@@ -410,7 +404,6 @@ public class YACHT implements CobolRunnable {
       b_WS_NUMBER = new CobolDataStorage(1);	/* WS-NUMBER */
       b_WS_COUNT = new CobolDataStorage(1);	/* WS-COUNT */
       b_WS_ABSENT = new CobolDataStorage(1);	/* WS-ABSENT */
-      b_WS_VALUE_ABSENT = new CobolDataStorage(1);	/* WS-VALUE-ABSENT */
 
       /* End of data storage */
 
@@ -468,7 +461,6 @@ public class YACHT implements CobolRunnable {
   private CobolDataStorage b_WS_NUMBER;	/* WS-NUMBER */
   private CobolDataStorage b_WS_COUNT;	/* WS-COUNT */
   private CobolDataStorage b_WS_ABSENT;	/* WS-ABSENT */
-  private CobolDataStorage b_WS_VALUE_ABSENT;	/* WS-VALUE-ABSENT */
 
   /* End of data storage */
 
