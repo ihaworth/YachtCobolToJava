@@ -3,7 +3,6 @@ import jp.osscons.opensourcecobol.libcobj.data.*;
 import jp.osscons.opensourcecobol.libcobj.exceptions.*;
 import jp.osscons.opensourcecobol.libcobj.call.*;
 import jp.osscons.opensourcecobol.libcobj.ui.*;
-import java.util.Optional;
 
 public class YACHT implements CobolRunnable {
 
@@ -97,43 +96,6 @@ public class YACHT implements CobolRunnable {
     /* Program return */
     return b_RETURN_CODE.intValue();
   }
-  public CobolControl[] contList = {
-          new CobolControl(0, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-
-              return Optional.of(contList[1]);
-            }
-          },
-          /* Entry YACHT */
-          new CobolControl(1, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-
-              return Optional.of(contList[2]);
-            }
-          },
-          /* MAIN SECTION */
-          new CobolControl(2, CobolControl.LabelType.section) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-
-              return Optional.of(contList[3]);
-            }
-          },
-          /* YACHT */
-          new CobolControl(3, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              score();
-              /* YACHT.cobol:43: EXIT */
-              {
-                if (!CobolModule.isQueueEmpty()) {
-                  return Optional.of(contList[contList.length - 1]);
-                }
-              }
-
-              return Optional.of(contList[4]);
-            }
-          },
-          CobolControl.pure()
-  };
 
   private void score() throws CobolStopRunException {
     /* YACHT.cobol:26: MOVE */
@@ -420,14 +382,6 @@ public class YACHT implements CobolRunnable {
         }
       }
       b_I.set(b_I.intValue() + 1);
-    }
-  }
-
-  public void execEntry(int start) throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
-    Optional<CobolControl> nextLabel = Optional.of(contList[start]);
-    while(nextLabel.isPresent()) {
-      CobolControl section = nextLabel.get();
-      nextLabel = section.run();
     }
   }
 
