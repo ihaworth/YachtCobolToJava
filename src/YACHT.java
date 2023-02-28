@@ -16,6 +16,7 @@ import static java.util.stream.Collectors.toMap;
 
 public class YACHT implements CobolRunnable {
 
+  private final List<Integer> rolledDice = new ArrayList<>();
   private boolean initialized = false;
   private static final boolean cobolInitialized = false;
 
@@ -218,7 +219,6 @@ public class YACHT implements CobolRunnable {
   }
 
   private Map<Integer, Integer> countDistinctDice() {
-    List<Integer> rolledDice = new ArrayList<>();
     for (int i = 1; i <= 5; i++)
     {
       CobolDataStorage subDataStorage = b_WS_WORKING.getSubDataStorage(i - 1);
