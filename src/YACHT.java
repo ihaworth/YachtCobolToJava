@@ -549,7 +549,7 @@ public class YACHT implements CobolRunnable {
   };
 
   private boolean isCategory(AbstractCobolField category) {
-    return (long) f_WS_CATEGORY.compareTo(category) == 0L;
+    return this.f_WS_CATEGORY.getString().trim().equals(category.getString());
   }
 
   public void execEntry(int start) throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
