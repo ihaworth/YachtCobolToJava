@@ -139,92 +139,60 @@ public class YACHT implements CobolRunnable {
               {
                 switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
                   case "yacht" ->
-                    /* YACHT.cobol:30: PERFORM */
-                    /* PERFORM SCORE-YACHT */
                           scoreYacht();
                   case "ones" -> {
-                    /* YACHT.cobol:31: MOVE */
                     {
                       b_WS_NUMBER.setByte(49);
                     }
-                    /* YACHT.cobol:31: PERFORM */
-                    /* PERFORM SCORE_NUMBERS */
                     scoreNumbers();
                   }
                   case "twos" -> {
-                    /* YACHT.cobol:32: MOVE */
                     {
                       b_WS_NUMBER.setByte(50);
                     }
-                    /* YACHT.cobol:32: PERFORM */
-                    /* PERFORM SCORE_NUMBERS */
                     scoreNumbers();
                   }
                   case "threes" -> {
-                    /* YACHT.cobol:33: MOVE */
                     {
                       b_WS_NUMBER.setByte(51);
                     }
-                    /* YACHT.cobol:33: PERFORM */
-                    /* PERFORM SCORE_NUMBERS */
                     scoreNumbers();
                   }
                   case "fours" -> {
-                    /* YACHT.cobol:34: MOVE */
                     {
                       b_WS_NUMBER.setByte(52);
                     }
-                    /* YACHT.cobol:34: PERFORM */
-                    /* PERFORM SCORE_NUMBERS */
                     scoreNumbers();
                   }
                   case "fives" -> {
-                    /* YACHT.cobol:35: MOVE */
                     {
                       b_WS_NUMBER.setByte(53);
                     }
-                    /* YACHT.cobol:35: PERFORM */
-                    /* PERFORM SCORE_NUMBERS */
                     scoreNumbers();
                   }
                   case "sixes" -> {
-                    /* YACHT.cobol:36: MOVE */
                     {
                       b_WS_NUMBER.setByte(54);
                     }
-                    /* YACHT.cobol:36: PERFORM */
-                    /* PERFORM SCORE_NUMBERS */
                     scoreNumbers();
                   }
                   case "full house" ->
-                    /* YACHT.cobol:37: PERFORM */
-                    /* PERFORM SCORE-FULL-HOUSE */
                           scoreFullHouse();
                   case "four of a kind" ->
-                    /* YACHT.cobol:38: PERFORM */
-                    /* PERFORM SCORE-FOUR-OF-A-KIND */
                           scoreFourOfAKind();
                   case "little straight" -> {
-                    /* YACHT.cobol:39: MOVE */
                     {
                       b_WS_ABSENT.setByte(54);
                     }
-                    /* YACHT.cobol:39: PERFORM */
-                    /* PERFORM SCORE-STRIGHT */
                     scoreStraight();
                   }
                   case "big straight" -> {
-                    /* YACHT.cobol:40: MOVE */
                     {
                       b_WS_ABSENT.setByte(49);
                     }
-                    /* YACHT.cobol:40: PERFORM */
-                    /* PERFORM SCORE-STRIGHT */
                     scoreStraight();
                   }
                   case "choice" ->
-                    /* YACHT.cobol:41: PERFORM */
-                    /* PERFORM SCORE-ALL-DICE */
                           scoreAllDice();
                 }
               }
