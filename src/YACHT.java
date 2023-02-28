@@ -178,20 +178,14 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreFourOfAKind() throws CobolStopRunException {
-    /* YACHT.cobol:70: PERFORM */
-    /* PERFORM COUNT-DISTINCT-DICE */
     Map<Integer, Integer> diceCounts = countDistinctDice();
-    /* YACHT.cobol:71: IF */
     if (diceCounts.size() <= 2)
     {
-      /* YACHT.cobol:72: PERFORM */
       for (int dieValue: diceCounts.keySet())
       {
         int count = diceCounts.get(dieValue);
-        /* YACHT.cobol:73: IF */
         if (count >= 4)
         {
-          /* YACHT.cobol:74: COMPUTE */
           d0.set (4);
           d1.set (dieValue);
           d0.mul (d1);
