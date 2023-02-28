@@ -99,21 +99,21 @@ public class YACHT implements CobolRunnable {
   }
   public CobolControl[] contList = {
           new CobolControl(0, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException {
 
               return Optional.of(contList[1]);
             }
           },
           /* Entry YACHT */
           new CobolControl(1, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException {
 
               return Optional.of(contList[2]);
             }
           },
           /* MAIN SECTION */
           new CobolControl(2, CobolControl.LabelType.section) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException {
 
               return Optional.of(contList[3]);
             }
@@ -285,7 +285,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE_NUMBERS */
           new CobolControl(5, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
               /* YACHT.cobol:53: MOVE */
               {
                 b_WS_COUNT.setByte(48);
@@ -414,7 +414,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE-ALL-DICE */
           new CobolControl(9, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
               /* YACHT.cobol:89: PERFORM */
               b_I.set(1);
               while ((long)(b_I.intValue() - 5) <= 0L)
@@ -433,7 +433,7 @@ public class YACHT implements CobolRunnable {
           },
           /* CHECK-VALUE-ABSENT */
           new CobolControl(10, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException {
               /* YACHT.cobol:94: MOVE */
               {
                 b_WS_VALUE_ABSENT.setByte(89);
@@ -462,7 +462,7 @@ public class YACHT implements CobolRunnable {
           },
           /* COUNT-DISTINCT-DICE */
           new CobolControl(11, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
               /* YACHT.cobol:103: MOVE */
               {
                 b_WS_NUM_DISTINCT_DICE.setByte(48);
