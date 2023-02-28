@@ -148,14 +148,14 @@ public class YACHT implements CobolRunnable {
               }
               /* YACHT.cobol:29: EVALUATE */
               {
-                if (((long)f_WS_CATEGORY.compareTo (c_1) == 0L))
+                if (isCategory(c_1))
                 {
                   /* YACHT.cobol:30: PERFORM */
                   /* PERFORM SCORE-YACHT */
                   CobolControl.perform(contList, 4).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_2) == 0L))
+                if (isCategory(c_2))
                 {
                   /* YACHT.cobol:31: MOVE */
                   {
@@ -166,7 +166,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_3) == 0L))
+                if (isCategory(c_3))
                 {
                   /* YACHT.cobol:32: MOVE */
                   {
@@ -177,7 +177,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_4) == 0L))
+                if (isCategory(c_4))
                 {
                   /* YACHT.cobol:33: MOVE */
                   {
@@ -188,7 +188,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_5) == 0L))
+                if (isCategory(c_5))
                 {
                   /* YACHT.cobol:34: MOVE */
                   {
@@ -199,7 +199,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_6) == 0L))
+                if (isCategory(c_6))
                 {
                   /* YACHT.cobol:35: MOVE */
                   {
@@ -210,7 +210,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_7) == 0L))
+                if (isCategory(c_7))
                 {
                   /* YACHT.cobol:36: MOVE */
                   {
@@ -221,14 +221,14 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_8) == 0L))
+                if (isCategory(c_8))
                 {
                   /* YACHT.cobol:37: PERFORM */
                   /* PERFORM SCORE-FULL-HOUSE */
                   CobolControl.perform(contList, 6).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_9) == 0L))
+                if (isCategory(c_9))
                 {
                   /* YACHT.cobol:38: PERFORM */
                   /* PERFORM SCORE-FOUR-OF-A-KIND */
@@ -246,7 +246,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 8).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_10) == 0L))
+                if (isCategory(c_10))
                 {
                   /* YACHT.cobol:40: MOVE */
                   {
@@ -257,7 +257,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 8).run();
                 }
                 else
-                if (((long)f_WS_CATEGORY.compareTo (c_11) == 0L))
+                if (isCategory(c_11))
                 {
                   /* YACHT.cobol:41: PERFORM */
                   /* PERFORM SCORE-ALL-DICE */
@@ -572,6 +572,11 @@ public class YACHT implements CobolRunnable {
           },
           CobolControl.pure()
   };
+
+  private boolean isCategory(AbstractCobolField category) {
+    return (long) f_WS_CATEGORY.compareTo(category) == 0L;
+  }
+
   public void execEntry(int start) throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
     Optional<CobolControl> nextLabel = Optional.of(contList[start]);
     while(nextLabel.isPresent()) {
