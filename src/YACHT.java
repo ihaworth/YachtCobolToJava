@@ -159,14 +159,12 @@ public class YACHT implements CobolRunnable {
 
   private boolean checkValueAbsent(int absentRoll) {
     b_WS_ABSENT.setByte('0' + absentRoll);
-    /* YACHT.cobol:95: PERFORM */
-    b_I.set(1);
-    while ((long)(b_I.intValue() - 5) <= 0L)
+    for (int i = 1; i <= 5; i++)
     {
       {
         /* YACHT.cobol:97: IF */
         {
-          if (((long)b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).memcmp (b_WS_ABSENT, 1) == 0L))
+          if (((long)b_WS_WORKING.getSubDataStorage((i - 1)).memcmp (b_WS_ABSENT, 1) == 0L))
           {
             /* YACHT.cobol:98: MOVE */
             {
@@ -175,7 +173,6 @@ public class YACHT implements CobolRunnable {
           }
         }
       }
-      b_I.set(b_I.intValue() + 1);
     }
     return true;
   }
