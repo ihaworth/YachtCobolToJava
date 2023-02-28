@@ -162,54 +162,6 @@ public class YACHT implements CobolRunnable {
               return Optional.of(contList[4]);
             }
           },
-          /* SCORE-YACHT */
-          new CobolControl(4, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
-          /* SCORE_NUMBERS */
-          new CobolControl(5, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
-          /* SCORE-FULL-HOUSE */
-          new CobolControl(6, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
-          /* SCORE-FOUR-OF-A-KIND */
-          new CobolControl(7, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
-          /* SCORE-STRIGHT */
-          new CobolControl(8, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
-          /* SCORE-ALL-DICE */
-          new CobolControl(9, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
-          /* CHECK-VALUE-ABSENT */
-          new CobolControl(10, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
-          /* COUNT-DISTINCT-DICE */
-          new CobolControl(11, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException {
-              return Optional.empty();
-            }
-          },
           CobolControl.pure()
   };
 
