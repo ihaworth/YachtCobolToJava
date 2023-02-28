@@ -231,7 +231,6 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreStraight(int absentRoll) throws CobolStopRunException {
-    b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:80: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     countDistinctDice();
@@ -241,6 +240,7 @@ public class YACHT implements CobolRunnable {
       {
         /* YACHT.cobol:82: PERFORM */
         /* PERFORM CHECK-VALUE-ABSENT */
+        b_WS_ABSENT.setByte('0' + absentRoll);
         checkValueAbsent();
         /* YACHT.cobol:83: IF */
         {
