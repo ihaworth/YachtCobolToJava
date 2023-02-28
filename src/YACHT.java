@@ -147,14 +147,9 @@ public class YACHT implements CobolRunnable {
                   case "sixes"           -> scoreNumbers(6);
                   case "full house"      -> scoreFullHouse();
                   case "four of a kind"  -> scoreFourOfAKind();
-                  case "little straight" -> {
-                    scoreStraight(6);
-                  }
-                  case "big straight" -> {
-                    scoreStraight(1);
-                  }
-                  case "choice" ->
-                          scoreAllDice();
+                  case "little straight" -> scoreStraight(6);
+                  case "big straight"    -> scoreStraight(1);
+                  case "choice"          -> scoreAllDice();
                 }
               }
               /* YACHT.cobol:43: EXIT */
