@@ -8,17 +8,8 @@ import java.util.Optional;
 public class YACHT implements CobolRunnable {
 
   private boolean initialized = false;
-  private CobolModule cobolCurrentModule;
-  private int frameIndex;
   private CobolModule module;
-  private CobolFrame frame;
   private static boolean cobolInitialized = false;
-  private CobolCallParams cobolSaveCallParams = null;
-  private CobolCallParams cobolCallParams = null;
-  private boolean cobolErrorOnExitFlag;
-  private int entry;
-
-  private CobolRunnable cob_unifunc;
 
 
   @Override
@@ -42,7 +33,6 @@ public class YACHT implements CobolRunnable {
   }
 
   public int YACHT_ (int entry, CobolDataStorage ...argStorages) {
-    this.entry = entry;
     return this.run_module(entry);
   }
 
@@ -607,8 +597,6 @@ public class YACHT implements CobolRunnable {
       d1 = new CobolDecimal();
 
       /* Data storage */
-
-      cob_unifunc = null;
 
       /* PROGRAM-ID : YACHT */
       b_RETURN_CODE = new CobolDataStorage(4);	/* RETURN-CODE */
