@@ -183,12 +183,11 @@ public class YACHT implements CobolRunnable {
 
   private void scoreFullHouse() throws CobolStopRunException {
     Map<Integer, Integer> diceCounts = countDistinctDice();
-    int numOfFirstDie = diceCounts.values().stream().findFirst().get();
-    if (diceCounts.size() == 2 &&
-            numOfFirstDie == 2 ||
-            numOfFirstDie == 3)
-    {
-      scoreAllDice();
+    if (diceCounts.size() == 2) {
+      int numOfFirstDie = diceCounts.values().stream().findFirst().get();
+      if (numOfFirstDie == 2 || numOfFirstDie == 3) {
+        scoreAllDice();
+      }
     }
   }
 
