@@ -137,14 +137,13 @@ public class YACHT implements CobolRunnable {
               }
               /* YACHT.cobol:29: EVALUATE */
               {
-                if (isCategory("yacht"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("yacht"))
                 {
                   /* YACHT.cobol:30: PERFORM */
                   /* PERFORM SCORE-YACHT */
                   CobolControl.perform(contList, 4).run();
                 }
-                else
-                if (isCategory("ones"))
+                else if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("ones"))
                 {
                   /* YACHT.cobol:31: MOVE */
                   {
@@ -155,8 +154,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory("twos"))
-                {
+                  if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("twos")) {
                   /* YACHT.cobol:32: MOVE */
                   {
                     b_WS_NUMBER.setByte(50);
@@ -166,7 +164,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory("threes"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("threes"))
                 {
                   /* YACHT.cobol:33: MOVE */
                   {
@@ -177,7 +175,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory("fours"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("fours"))
                 {
                   /* YACHT.cobol:34: MOVE */
                   {
@@ -188,7 +186,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory("fives"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("fives"))
                 {
                   /* YACHT.cobol:35: MOVE */
                   {
@@ -199,7 +197,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory("sixes"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("sixes"))
                 {
                   /* YACHT.cobol:36: MOVE */
                   {
@@ -210,21 +208,21 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory("full house"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("full house"))
                 {
                   /* YACHT.cobol:37: PERFORM */
                   /* PERFORM SCORE-FULL-HOUSE */
                   CobolControl.perform(contList, 6).run();
                 }
                 else
-                if (isCategory("four of a kind"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("four of a kind"))
                 {
                   /* YACHT.cobol:38: PERFORM */
                   /* PERFORM SCORE-FOUR-OF-A-KIND */
                   CobolControl.perform(contList, 7).run();
                 }
                 else
-                if (isCategory("little straight"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("little straight"))
                 {
                   /* YACHT.cobol:39: MOVE */
                   {
@@ -235,7 +233,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 8).run();
                 }
                 else
-                if (isCategory("big straight"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("big straight"))
                 {
                   /* YACHT.cobol:40: MOVE */
                   {
@@ -246,7 +244,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 8).run();
                 }
                 else
-                if (isCategory("choice"))
+                if (YACHT.this.f_WS_CATEGORY.getString().trim().equals("choice"))
                 {
                   /* YACHT.cobol:41: PERFORM */
                   /* PERFORM SCORE-ALL-DICE */
@@ -547,10 +545,6 @@ public class YACHT implements CobolRunnable {
           },
           CobolControl.pure()
   };
-
-  private boolean isCategory(String category) {
-    return this.f_WS_CATEGORY.getString().trim().equals(category);
-  }
 
   public void execEntry(int start) throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
     Optional<CobolControl> nextLabel = Optional.of(contList[start]);
