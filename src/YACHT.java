@@ -211,7 +211,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:39: PERFORM */
                     /* PERFORM SCORE-STRIGHT */
-                    CobolControl.perform(contList, 8).run();
+                    scoreStraight();
                   }
                   case "big straight" -> {
                     /* YACHT.cobol:40: MOVE */
@@ -220,7 +220,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:40: PERFORM */
                     /* PERFORM SCORE-STRIGHT */
-                    CobolControl.perform(contList, 8).run();
+                    scoreStraight();
                   }
                   case "choice" ->
                     /* YACHT.cobol:41: PERFORM */
@@ -265,30 +265,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-STRIGHT */
           new CobolControl(8, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
-              /* YACHT.cobol:80: PERFORM */
-              /* PERFORM COUNT-DISTINCT-DICE */
-              countDistinctDice();
-              /* YACHT.cobol:81: IF */
-              {
-                if (((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 5) == 0L))
-                {
-                  /* YACHT.cobol:82: PERFORM */
-                  /* PERFORM CHECK-VALUE-ABSENT */
-                  CobolControl.perform(contList, 10).run();
-                  /* YACHT.cobol:83: IF */
-                  {
-                    if (((long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 89) == 0L))
-                    {
-                      /* YACHT.cobol:84: MOVE */
-                      {
-                        b_WS_RESULT.setBytes ("30", 2);
-                      }
-                    }
-                  }
-                }
-              }
-
-              return Optional.of(contList[9]);
+              return scoreStraight();
             }
           },
           /* SCORE-ALL-DICE */
@@ -347,6 +324,33 @@ public class YACHT implements CobolRunnable {
           },
           CobolControl.pure()
   };
+
+  private Optional<CobolControl> scoreStraight() throws CobolStopRunException, CobolGoBackException {
+    /* YACHT.cobol:80: PERFORM */
+    /* PERFORM COUNT-DISTINCT-DICE */
+    countDistinctDice();
+    /* YACHT.cobol:81: IF */
+    {
+      if (((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 5) == 0L))
+      {
+        /* YACHT.cobol:82: PERFORM */
+        /* PERFORM CHECK-VALUE-ABSENT */
+        CobolControl.perform(contList, 10).run();
+        /* YACHT.cobol:83: IF */
+        {
+          if (((long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 89) == 0L))
+          {
+            /* YACHT.cobol:84: MOVE */
+            {
+              b_WS_RESULT.setBytes ("30", 2);
+            }
+          }
+        }
+      }
+    }
+
+    return Optional.of(contList[9]);
+  }
 
   private Optional<CobolControl> scoreFourOfAKind() throws CobolStopRunException {
     /* YACHT.cobol:70: PERFORM */
