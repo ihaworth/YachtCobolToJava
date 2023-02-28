@@ -185,14 +185,15 @@ public class YACHT implements CobolRunnable {
     if (diceCounts.size() <= 2)
     {
       /* YACHT.cobol:72: PERFORM */
-      for (int j = 0; j < diceCounts.size(); j++)
+      for (int dieValue: diceCounts.keySet())
       {
+        int count = diceCounts.get(dieValue);
         /* YACHT.cobol:73: IF */
-        if (((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(j).cmpNumdisp (1, 4) >= 0L))
+        if (count >= 4)
         {
           /* YACHT.cobol:74: COMPUTE */
           d0.set (4);
-          d1.set (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage(j).getNumdisp(1));
+          d1.set (dieValue);
           d0.mul (d1);
           d0.getField (f_WS_RESULT, 4);
         }
