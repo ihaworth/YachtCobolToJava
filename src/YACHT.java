@@ -149,7 +149,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:31: PERFORM */
                     /* PERFORM SCORE_NUMBERS */
-                    CobolControl.perform(contList, 5).run();
+                    scoreNumbers();
                   }
                   case "twos" -> {
                     /* YACHT.cobol:32: MOVE */
@@ -158,7 +158,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:32: PERFORM */
                     /* PERFORM SCORE_NUMBERS */
-                    CobolControl.perform(contList, 5).run();
+                    scoreNumbers();
                   }
                   case "threes" -> {
                     /* YACHT.cobol:33: MOVE */
@@ -167,7 +167,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:33: PERFORM */
                     /* PERFORM SCORE_NUMBERS */
-                    CobolControl.perform(contList, 5).run();
+                    scoreNumbers();
                   }
                   case "fours" -> {
                     /* YACHT.cobol:34: MOVE */
@@ -176,7 +176,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:34: PERFORM */
                     /* PERFORM SCORE_NUMBERS */
-                    CobolControl.perform(contList, 5).run();
+                    scoreNumbers();
                   }
                   case "fives" -> {
                     /* YACHT.cobol:35: MOVE */
@@ -185,7 +185,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:35: PERFORM */
                     /* PERFORM SCORE_NUMBERS */
-                    CobolControl.perform(contList, 5).run();
+                    scoreNumbers();
                   }
                   case "sixes" -> {
                     /* YACHT.cobol:36: MOVE */
@@ -194,7 +194,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:36: PERFORM */
                     /* PERFORM SCORE_NUMBERS */
-                    CobolControl.perform(contList, 5).run();
+                    scoreNumbers();
                   }
                   case "full house" ->
                     /* YACHT.cobol:37: PERFORM */
@@ -247,41 +247,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE_NUMBERS */
           new CobolControl(5, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              /* YACHT.cobol:53: MOVE */
-              {
-                b_WS_COUNT.setByte(48);
-              }
-              /* YACHT.cobol:54: PERFORM */
-              b_I.set(1);
-              while ((long)(b_I.intValue() - 5) <= 0L)
-              {
-                {
-                  /* YACHT.cobol:55: IF */
-                  {
-                    if (((long)b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).memcmp (b_WS_NUMBER, 1) == 0L))
-                    {
-                      /* YACHT.cobol:56: ADD */
-                      {
-                        f_WS_COUNT.add (c_12, 4);
-                      }
-                    }
-                  }
-                }
-                b_I.set(b_I.intValue() + 1);
-              }
-              /* YACHT.cobol:59: COMPUTE */
-              {
-                {
-                  {
-                    d0.set (b_WS_NUMBER.getNumdisp(1));
-                    d1.set (b_WS_COUNT.getNumdisp(1));
-                    d0.mul (d1);
-                    d0.getField (f_WS_RESULT, 4);
-                  }
-                }
-              }
-
-              return Optional.of(contList[6]);
+              return scoreNumbers();
             }
           },
           /* SCORE-FULL-HOUSE */
@@ -429,6 +395,44 @@ public class YACHT implements CobolRunnable {
           },
           CobolControl.pure()
   };
+
+  private Optional<CobolControl> scoreNumbers() throws CobolStopRunException {
+    /* YACHT.cobol:53: MOVE */
+    {
+      b_WS_COUNT.setByte(48);
+    }
+    /* YACHT.cobol:54: PERFORM */
+    b_I.set(1);
+    while ((long)(b_I.intValue() - 5) <= 0L)
+    {
+      {
+        /* YACHT.cobol:55: IF */
+        {
+          if (((long)b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).memcmp (b_WS_NUMBER, 1) == 0L))
+          {
+            /* YACHT.cobol:56: ADD */
+            {
+              f_WS_COUNT.add (c_12, 4);
+            }
+          }
+        }
+      }
+      b_I.set(b_I.intValue() + 1);
+    }
+    /* YACHT.cobol:59: COMPUTE */
+    {
+      {
+        {
+          d0.set (b_WS_NUMBER.getNumdisp(1));
+          d1.set (b_WS_COUNT.getNumdisp(1));
+          d0.mul (d1);
+          d0.getField (f_WS_RESULT, 4);
+        }
+      }
+    }
+
+    return Optional.of(contList[6]);
+  }
 
   private Optional<CobolControl> scoreYacht() throws CobolStopRunException {
     /* YACHT.cobol:46: PERFORM */
