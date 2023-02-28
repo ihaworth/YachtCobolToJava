@@ -316,7 +316,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private Optional<CobolControl> scoreFullHouse() throws CobolStopRunException {
+  private void scoreFullHouse() throws CobolStopRunException {
     /* YACHT.cobol:62: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     countDistinctDice();
@@ -329,8 +329,6 @@ public class YACHT implements CobolRunnable {
         scoreAllDice();
       }
     }
-
-    return Optional.of(contList[7]);
   }
 
   private void scoreNumbers(int number) throws CobolStopRunException {
