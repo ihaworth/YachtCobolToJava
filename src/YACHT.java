@@ -129,12 +129,12 @@ public class YACHT implements CobolRunnable {
 
   private void scoreAllDice() throws CobolStopRunException {
     /* YACHT.cobol:89: PERFORM */
-    for (int i = 1; i <= 5; i++)
+    for (int i = 0; i < 5; i++)
     {
       {
         /* YACHT.cobol:90: ADD */
         {
-          f_WS_RESULT.add (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage((i - 1)), a_2), 4);
+          f_WS_RESULT.add (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage((i)), a_2), 4);
         }
       }
     }
