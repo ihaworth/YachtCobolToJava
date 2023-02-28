@@ -617,17 +617,6 @@ public class YACHT implements CobolRunnable {
 
       /* Constants */
 
-      c_1	= CobolFieldFactory.makeCobolField(5, "yacht", a_3);
-      c_2	= CobolFieldFactory.makeCobolField(4, "ones", a_3);
-      c_3	= CobolFieldFactory.makeCobolField(4, "twos", a_3);
-      c_4	= CobolFieldFactory.makeCobolField(6, "threes", a_3);
-      c_5	= CobolFieldFactory.makeCobolField(5, "fours", a_3);
-      c_6	= CobolFieldFactory.makeCobolField(5, "fives", a_3);
-      c_7	= CobolFieldFactory.makeCobolField(5, "sixes", a_3);
-      c_8	= CobolFieldFactory.makeCobolField(10, "full house", a_3);
-      c_9	= CobolFieldFactory.makeCobolField(14, "four of a kind", a_3);
-      c_10	= CobolFieldFactory.makeCobolField(12, "big straight", a_3);
-      c_11	= CobolFieldFactory.makeCobolField(6, "choice", a_3);
       c_12	= CobolFieldFactory.makeCobolField(1, "1", a_2);
 
     } catch(Exception e) {
@@ -685,17 +674,6 @@ public class YACHT implements CobolRunnable {
   /* Constants */
 
   private AbstractCobolField c_12;
-  private AbstractCobolField c_11;
-  private AbstractCobolField c_10;
-  private AbstractCobolField c_9;
-  private AbstractCobolField c_8;
-  private AbstractCobolField c_7;
-  private AbstractCobolField c_6;
-  private AbstractCobolField c_5;
-  private AbstractCobolField c_4;
-  private AbstractCobolField c_3;
-  private AbstractCobolField c_2;
-  private AbstractCobolField c_1;
 
   /* Attributes */
 
