@@ -177,7 +177,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-FULL-HOUSE */
           new CobolControl(6, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              return scoreFullHouse();
+              return Optional.empty();
             }
           },
           /* SCORE-FOUR-OF-A-KIND */
