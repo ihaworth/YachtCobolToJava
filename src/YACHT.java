@@ -219,9 +219,9 @@ public class YACHT implements CobolRunnable {
   }
 
   private Map<Integer, Integer> countDistinctDice() {
-    for (int i = 1; i <= 5; i++)
+    for (int i = 0; i < 5; i++)
     {
-      int dieRoll = b_WS_WORKING.getSubDataStorage(i - 1).getByte(0) - '0';
+      int dieRoll = b_WS_WORKING.getSubDataStorage(i).getByte(0) - '0';
       rolledDice.add(dieRoll);
     }
 
