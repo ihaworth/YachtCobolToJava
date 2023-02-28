@@ -255,7 +255,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private Optional<CobolControl> checkValueAbsent(int absentRoll) {
+  private void checkValueAbsent(int absentRoll) {
     b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:94: MOVE */
     {
@@ -279,8 +279,6 @@ public class YACHT implements CobolRunnable {
       }
       b_I.set(b_I.intValue() + 1);
     }
-
-    return Optional.of(contList[11]);
   }
 
   private Optional<CobolControl> scoreFourOfAKind() throws CobolStopRunException {
