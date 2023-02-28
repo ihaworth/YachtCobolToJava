@@ -161,17 +161,8 @@ public class YACHT implements CobolRunnable {
     b_WS_ABSENT.setByte('0' + absentRoll);
     for (int i = 1; i <= 5; i++)
     {
-      {
-        /* YACHT.cobol:97: IF */
-        {
-          if (((long)b_WS_WORKING.getSubDataStorage((i - 1)).memcmp (b_WS_ABSENT, 1) == 0L))
-          {
-            /* YACHT.cobol:98: MOVE */
-            {
-              return false;
-            }
-          }
-        }
+      if (((long)b_WS_WORKING.getSubDataStorage((i - 1)).memcmp (b_WS_ABSENT, 1) == 0L)) {
+        return false;
       }
     }
     return true;
