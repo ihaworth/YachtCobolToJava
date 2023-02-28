@@ -706,12 +706,17 @@ public class YACHT implements CobolRunnable {
 
 
   public int score(String dice, String category) {
+    // Initialise data
     run_module(1);
+
+    // Pass parameters
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
 
+    // Invoke
     run_module(1);
 
+    // Get result
     return f_WS_RESULT.getInt();
   }
 }
