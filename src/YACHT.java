@@ -83,7 +83,7 @@ public class YACHT implements CobolRunnable {
       CobolStopRunException.dummy();
       CobolGoBackException.dummy();
       /* Entry dispatch */
-      execEntry(1);
+      score();
 
     } catch(CobolGoBackException e) {
       return e.getReturnCode();
