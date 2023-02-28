@@ -141,39 +141,27 @@ public class YACHT implements CobolRunnable {
                   case "yacht" ->
                           scoreYacht();
                   case "ones" -> {
-                    {
-                      b_WS_NUMBER.setByte(49);
-                    }
+                    b_WS_NUMBER.setByte(49);
                     scoreNumbers();
                   }
                   case "twos" -> {
-                    {
-                      b_WS_NUMBER.setByte(50);
-                    }
+                    b_WS_NUMBER.setByte(50);
                     scoreNumbers();
                   }
                   case "threes" -> {
-                    {
-                      b_WS_NUMBER.setByte(51);
-                    }
+                    b_WS_NUMBER.setByte(51);
                     scoreNumbers();
                   }
                   case "fours" -> {
-                    {
-                      b_WS_NUMBER.setByte(52);
-                    }
+                    b_WS_NUMBER.setByte(52);
                     scoreNumbers();
                   }
                   case "fives" -> {
-                    {
-                      b_WS_NUMBER.setByte(53);
-                    }
+                    b_WS_NUMBER.setByte(53);
                     scoreNumbers();
                   }
                   case "sixes" -> {
-                    {
-                      b_WS_NUMBER.setByte(54);
-                    }
+                    b_WS_NUMBER.setByte(54);
                     scoreNumbers();
                   }
                   case "full house" ->
@@ -181,15 +169,11 @@ public class YACHT implements CobolRunnable {
                   case "four of a kind" ->
                           scoreFourOfAKind();
                   case "little straight" -> {
-                    {
-                      b_WS_ABSENT.setByte(54);
-                    }
+                    b_WS_ABSENT.setByte(54);
                     scoreStraight();
                   }
                   case "big straight" -> {
-                    {
-                      b_WS_ABSENT.setByte(49);
-                    }
+                    b_WS_ABSENT.setByte(49);
                     scoreStraight();
                   }
                   case "choice" ->
