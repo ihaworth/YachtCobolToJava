@@ -141,27 +141,27 @@ public class YACHT implements CobolRunnable {
                   case "yacht" ->
                           scoreYacht();
                   case "ones" -> {
-                    b_WS_NUMBER.setByte('1');
+                    b_WS_NUMBER.setByte('0' + 1);
                     scoreNumbers();
                   }
                   case "twos" -> {
-                    b_WS_NUMBER.setByte('2');
+                    b_WS_NUMBER.setByte('0' + 2);
                     scoreNumbers();
                   }
                   case "threes" -> {
-                    b_WS_NUMBER.setByte('3');
+                    b_WS_NUMBER.setByte('0' + 3);
                     scoreNumbers();
                   }
                   case "fours" -> {
-                    b_WS_NUMBER.setByte('4');
+                    b_WS_NUMBER.setByte('0' + 4);
                     scoreNumbers();
                   }
                   case "fives" -> {
-                    b_WS_NUMBER.setByte('5');
+                    b_WS_NUMBER.setByte('0' + 5);
                     scoreNumbers();
                   }
                   case "sixes" -> {
-                    b_WS_NUMBER.setByte('6');
+                    b_WS_NUMBER.setByte('0' + 6);
                     scoreNumbers();
                   }
                   case "full house" ->
