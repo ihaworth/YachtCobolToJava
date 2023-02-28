@@ -188,7 +188,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE-STRIGHT */
           new CobolControl(8, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException {
               return Optional.empty();
             }
           },
@@ -253,7 +253,7 @@ public class YACHT implements CobolRunnable {
     return Optional.of(contList[10]);
   }
 
-  private Optional<CobolControl> scoreStraight(int absentRoll) throws CobolStopRunException, CobolGoBackException {
+  private void scoreStraight(int absentRoll) throws CobolStopRunException, CobolGoBackException {
     b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:80: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
@@ -277,8 +277,6 @@ public class YACHT implements CobolRunnable {
         }
       }
     }
-
-    return Optional.of(contList[9]);
   }
 
   private Optional<CobolControl> scoreFourOfAKind() throws CobolStopRunException {
