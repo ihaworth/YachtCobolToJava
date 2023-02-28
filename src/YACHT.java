@@ -143,10 +143,10 @@ public class YACHT implements CobolRunnable {
       {
         /* YACHT.cobol:82: PERFORM */
         /* PERFORM CHECK-VALUE-ABSENT */
-        checkValueAbsent(absentRoll);
+        boolean valueIsAbsent = checkValueAbsent(absentRoll);
         /* YACHT.cobol:83: IF */
         {
-          if (((long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 'Y') == 0L))
+          if (valueIsAbsent)
           {
             /* YACHT.cobol:84: MOVE */
             {
@@ -158,7 +158,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void checkValueAbsent(int absentRoll) {
+  private boolean checkValueAbsent(int absentRoll) {
     b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:94: MOVE */
     {
@@ -176,12 +176,14 @@ public class YACHT implements CobolRunnable {
             /* YACHT.cobol:98: MOVE */
             {
               b_WS_VALUE_ABSENT.setByte('N');
+              return false;
             }
           }
         }
       }
       b_I.set(b_I.intValue() + 1);
     }
+    return true;
   }
 
   private void scoreFourOfAKind() throws CobolStopRunException {
