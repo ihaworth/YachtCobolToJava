@@ -176,7 +176,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE-FULL-HOUSE */
           new CobolControl(6, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException {
               return Optional.empty();
             }
           },
