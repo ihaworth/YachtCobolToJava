@@ -144,10 +144,10 @@ public class YACHT implements CobolRunnable {
   private void scoreStraight(int absentRoll) throws CobolStopRunException {
     /* YACHT.cobol:80: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
-    countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice();
     /* YACHT.cobol:81: IF */
     {
-      if (((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 5) == 0L))
+      if (diceCounts.size() == 5)
       {
         /* YACHT.cobol:82: PERFORM */
         /* PERFORM CHECK-VALUE-ABSENT */
@@ -180,10 +180,10 @@ public class YACHT implements CobolRunnable {
   private void scoreFourOfAKind() throws CobolStopRunException {
     /* YACHT.cobol:70: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
-    countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice();
     /* YACHT.cobol:71: IF */
     {
-      if (((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 2) <= 0L))
+      if (diceCounts.size() <= 2)
       {
         /* YACHT.cobol:72: PERFORM */
         b_J.set(1);
@@ -217,10 +217,13 @@ public class YACHT implements CobolRunnable {
   private void scoreFullHouse() throws CobolStopRunException {
     /* YACHT.cobol:62: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
-    countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice();
     /* YACHT.cobol:63: IF */
     {
-      if (((((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 2) == 0L) && ((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(0).cmpNumdisp (1, 2) == 0L)) || ((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(0).cmpNumdisp (1, 3) == 0L)))
+      Integer numOfFirstDie = diceCounts.values().stream().findFirst().get();
+      if (diceCounts.size() == 2 &&
+              numOfFirstDie == 2 ||
+              numOfFirstDie == 3)
       {
         /* YACHT.cobol:66: PERFORM */
         /* PERFORM SCORE-ALL-DICE */
@@ -270,10 +273,10 @@ public class YACHT implements CobolRunnable {
   private void scoreYacht() throws CobolStopRunException {
     /* YACHT.cobol:46: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
-    countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice();
     /* YACHT.cobol:47: IF */
     {
-      if (((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 1) == 0L))
+      if (diceCounts.size() == 1)
       {
         /* YACHT.cobol:48: MOVE */
         {
