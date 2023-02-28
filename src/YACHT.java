@@ -146,7 +146,7 @@ public class YACHT implements CobolRunnable {
         checkValueAbsent(absentRoll);
         /* YACHT.cobol:83: IF */
         {
-          if (((long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 89) == 0L))
+          if (((long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 'Y') == 0L))
           {
             /* YACHT.cobol:84: MOVE */
             {
@@ -162,11 +162,11 @@ public class YACHT implements CobolRunnable {
     b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:94: MOVE */
     {
-      b_WS_VALUE_ABSENT.setByte(89);
+      b_WS_VALUE_ABSENT.setByte('Y');
     }
     /* YACHT.cobol:95: PERFORM */
     b_I.set(1);
-    while ((long)(b_I.intValue() - 5) <= 0L && (long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 78) != 0L)
+    while ((long)(b_I.intValue() - 5) <= 0L && (long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 'N') != 0L)
     {
       {
         /* YACHT.cobol:97: IF */
@@ -175,7 +175,7 @@ public class YACHT implements CobolRunnable {
           {
             /* YACHT.cobol:98: MOVE */
             {
-              b_WS_VALUE_ABSENT.setByte(78);
+              b_WS_VALUE_ABSENT.setByte('N');
             }
           }
         }
@@ -318,11 +318,11 @@ public class YACHT implements CobolRunnable {
       {
         /* YACHT.cobol:110: MOVE */
         {
-          b_WS_DIE_PROCESSED.setByte(78);
+          b_WS_DIE_PROCESSED.setByte('N');
         }
         /* YACHT.cobol:111: PERFORM */
         b_J.set(1);
-        while ((long)(Byte.toUnsignedInt(b_WS_DIE_PROCESSED.getByte(0)) - 89) != 0L)
+        while ((long)(Byte.toUnsignedInt(b_WS_DIE_PROCESSED.getByte(0)) - 'Y') != 0L)
         {
           {
             /* YACHT.cobol:112: IF */
@@ -343,7 +343,7 @@ public class YACHT implements CobolRunnable {
                 }
                 /* YACHT.cobol:116: MOVE */
                 {
-                  b_WS_DIE_PROCESSED.setByte(89);
+                  b_WS_DIE_PROCESSED.setByte('Y');
                 }
               }
               else
@@ -358,7 +358,7 @@ public class YACHT implements CobolRunnable {
                     }
                     /* YACHT.cobol:120: MOVE */
                     {
-                      b_WS_DIE_PROCESSED.setByte(89);
+                      b_WS_DIE_PROCESSED.setByte('Y');
                     }
                   }
                 }
