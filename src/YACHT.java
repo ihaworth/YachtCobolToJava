@@ -199,7 +199,7 @@ public class YACHT implements CobolRunnable {
                   case "full house" ->
                     /* YACHT.cobol:37: PERFORM */
                     /* PERFORM SCORE-FULL-HOUSE */
-                          CobolControl.perform(contList, 6).run();
+                          scoreFullHouse();
                   case "four of a kind" ->
                     /* YACHT.cobol:38: PERFORM */
                     /* PERFORM SCORE-FOUR-OF-A-KIND */
@@ -253,20 +253,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-FULL-HOUSE */
           new CobolControl(6, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
-              /* YACHT.cobol:62: PERFORM */
-              /* PERFORM COUNT-DISTINCT-DICE */
-              countDistinctDice();
-              /* YACHT.cobol:63: IF */
-              {
-                if (((((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 2) == 0L) && ((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(0).cmpNumdisp (1, 2) == 0L)) || ((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(0).cmpNumdisp (1, 3) == 0L)))
-                {
-                  /* YACHT.cobol:66: PERFORM */
-                  /* PERFORM SCORE-ALL-DICE */
-                  CobolControl.perform(contList, 9).run();
-                }
-              }
-
-              return Optional.of(contList[7]);
+              return scoreFullHouse();
             }
           },
           /* SCORE-FOUR-OF-A-KIND */
@@ -395,6 +382,23 @@ public class YACHT implements CobolRunnable {
           },
           CobolControl.pure()
   };
+
+  private Optional<CobolControl> scoreFullHouse() throws CobolStopRunException, CobolGoBackException {
+    /* YACHT.cobol:62: PERFORM */
+    /* PERFORM COUNT-DISTINCT-DICE */
+    countDistinctDice();
+    /* YACHT.cobol:63: IF */
+    {
+      if (((((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 2) == 0L) && ((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(0).cmpNumdisp (1, 2) == 0L)) || ((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(0).cmpNumdisp (1, 3) == 0L)))
+      {
+        /* YACHT.cobol:66: PERFORM */
+        /* PERFORM SCORE-ALL-DICE */
+        CobolControl.perform(contList, 9).run();
+      }
+    }
+
+    return Optional.of(contList[7]);
+  }
 
   private Optional<CobolControl> scoreNumbers() throws CobolStopRunException {
     /* YACHT.cobol:53: MOVE */
