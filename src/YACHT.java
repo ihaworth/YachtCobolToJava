@@ -137,14 +137,14 @@ public class YACHT implements CobolRunnable {
               }
               /* YACHT.cobol:29: EVALUATE */
               {
-                if (isCategory(c_1))
+                if (isCategory(c_1.getString()))
                 {
                   /* YACHT.cobol:30: PERFORM */
                   /* PERFORM SCORE-YACHT */
                   CobolControl.perform(contList, 4).run();
                 }
                 else
-                if (isCategory(c_2))
+                if (isCategory(c_2.getString()))
                 {
                   /* YACHT.cobol:31: MOVE */
                   {
@@ -155,7 +155,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory(c_3))
+                if (isCategory(c_3.getString()))
                 {
                   /* YACHT.cobol:32: MOVE */
                   {
@@ -166,7 +166,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory(c_4))
+                if (isCategory(c_4.getString()))
                 {
                   /* YACHT.cobol:33: MOVE */
                   {
@@ -177,7 +177,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory(c_5))
+                if (isCategory(c_5.getString()))
                 {
                   /* YACHT.cobol:34: MOVE */
                   {
@@ -188,7 +188,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory(c_6))
+                if (isCategory(c_6.getString()))
                 {
                   /* YACHT.cobol:35: MOVE */
                   {
@@ -199,7 +199,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory(c_7))
+                if (isCategory(c_7.getString()))
                 {
                   /* YACHT.cobol:36: MOVE */
                   {
@@ -210,14 +210,14 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 5).run();
                 }
                 else
-                if (isCategory(c_8))
+                if (isCategory(c_8.getString()))
                 {
                   /* YACHT.cobol:37: PERFORM */
                   /* PERFORM SCORE-FULL-HOUSE */
                   CobolControl.perform(contList, 6).run();
                 }
                 else
-                if (isCategory(c_9))
+                if (isCategory(c_9.getString()))
                 {
                   /* YACHT.cobol:38: PERFORM */
                   /* PERFORM SCORE-FOUR-OF-A-KIND */
@@ -235,7 +235,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 8).run();
                 }
                 else
-                if (isCategory(c_10))
+                if (isCategory(c_10.getString()))
                 {
                   /* YACHT.cobol:40: MOVE */
                   {
@@ -246,7 +246,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 8).run();
                 }
                 else
-                if (isCategory(c_11))
+                if (isCategory(c_11.getString()))
                 {
                   /* YACHT.cobol:41: PERFORM */
                   /* PERFORM SCORE-ALL-DICE */
@@ -548,8 +548,8 @@ public class YACHT implements CobolRunnable {
           CobolControl.pure()
   };
 
-  private boolean isCategory(AbstractCobolField category) {
-    return this.f_WS_CATEGORY.getString().trim().equals(category.getString());
+  private boolean isCategory(String category) {
+    return this.f_WS_CATEGORY.getString().trim().equals(category);
   }
 
   public void execEntry(int start) throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
