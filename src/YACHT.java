@@ -70,7 +70,6 @@ public class YACHT implements CobolRunnable {
       b_WS_RESULT.fillBytes (48, 2);
       b_WS_WORKING.fillBytes('0', 15);
       b_WS_NUM_DISTINCT_DICE.setByte('0');
-      b_WS_DIE_PROCESSED.setByte(' ');
       b_WS_NUMBER.setByte('0');
       b_WS_COUNT.setByte('0');
       b_WS_ABSENT.setByte('0');
@@ -288,10 +287,9 @@ public class YACHT implements CobolRunnable {
     /* YACHT.cobol:109: PERFORM */
     for (int i = 1; i <= 5; i++)
     {
-      /* YACHT.cobol:110: MOVE */
-      b_WS_DIE_PROCESSED.setByte('N');
+      boolean dieProcessed = false;
       /* YACHT.cobol:111: PERFORM */
-      for (int j = 1; (long)(Byte.toUnsignedInt(b_WS_DIE_PROCESSED.getByte(0)) - 'Y') != 0L; j++)
+      for (int j = 1; !dieProcessed; j++)
       {
         /* YACHT.cobol:112: IF */
         if (((long)(j - b_WS_NUM_DISTINCT_DICE.getNumdisp(1)) >  0L))
@@ -303,7 +301,7 @@ public class YACHT implements CobolRunnable {
           /* YACHT.cobol:115: ADD */
           f_WS_NUM_DISTINCT_DICE.add (c_12, 4);
           /* YACHT.cobol:116: MOVE */
-          b_WS_DIE_PROCESSED.setByte('Y');
+          dieProcessed = true;
         }
         else
         {
@@ -313,7 +311,7 @@ public class YACHT implements CobolRunnable {
             /* YACHT.cobol:119: ADD */
             CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)), a_2).add (c_12, 4);
             /* YACHT.cobol:120: MOVE */
-            b_WS_DIE_PROCESSED.setByte('Y');
+            dieProcessed = true;
           }
         }
       }
@@ -352,7 +350,6 @@ public class YACHT implements CobolRunnable {
       b_I = new CobolDataStorage(4);	/* I */
       b_J = new CobolDataStorage(4);	/* J */
       b_WS_NUM_DISTINCT_DICE = new CobolDataStorage(1);	/* WS-NUM-DISTINCT-DICE */
-      b_WS_DIE_PROCESSED = new CobolDataStorage(1);	/* WS-DIE-PROCESSED */
       b_WS_NUMBER = new CobolDataStorage(1);	/* WS-NUMBER */
       b_WS_COUNT = new CobolDataStorage(1);	/* WS-COUNT */
       b_WS_ABSENT = new CobolDataStorage(1);	/* WS-ABSENT */
@@ -409,7 +406,6 @@ public class YACHT implements CobolRunnable {
   private CobolDataStorage b_I;	/* I */
   private CobolDataStorage b_J;	/* J */
   private CobolDataStorage b_WS_NUM_DISTINCT_DICE;	/* WS-NUM-DISTINCT-DICE */
-  private CobolDataStorage b_WS_DIE_PROCESSED;	/* WS-DIE-PROCESSED */
   private CobolDataStorage b_WS_NUMBER;	/* WS-NUMBER */
   private CobolDataStorage b_WS_COUNT;	/* WS-COUNT */
   private CobolDataStorage b_WS_ABSENT;	/* WS-ABSENT */
