@@ -343,8 +343,8 @@ public class YACHT implements CobolRunnable {
     return Optional.of(contList[7]);
   }
 
-  private void scoreNumbers(int x) throws CobolStopRunException {
-    b_WS_NUMBER.setByte('0' + x);
+  private void scoreNumbers(int number) throws CobolStopRunException {
+    b_WS_NUMBER.setByte('0' + number);
     /* YACHT.cobol:53: MOVE */
     {
       b_WS_COUNT.setByte(48);
