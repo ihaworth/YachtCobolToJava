@@ -224,7 +224,7 @@ public class YACHT implements CobolRunnable {
                   CobolControl.perform(contList, 7).run();
                 }
                 else
-                if (((long)b_WS_CATEGORY.memcmp ("little straight", 15) == 0L))
+                if (isCategory("little straight"))
                 {
                   /* YACHT.cobol:39: MOVE */
                   {
