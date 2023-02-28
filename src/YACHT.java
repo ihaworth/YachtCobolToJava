@@ -251,18 +251,10 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreYacht() {
-    /* YACHT.cobol:46: PERFORM */
-    /* PERFORM COUNT-DISTINCT-DICE */
     Map<Integer, Integer> diceCounts = countDistinctDice();
-    /* YACHT.cobol:47: IF */
+    if (diceCounts.size() == 1)
     {
-      if (diceCounts.size() == 1)
-      {
-        /* YACHT.cobol:48: MOVE */
-        {
-          b_WS_RESULT.setBytes ("50", 2);
-        }
-      }
+      b_WS_RESULT.setBytes ("50", 2);
     }
   }
 
