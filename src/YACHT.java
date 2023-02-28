@@ -79,7 +79,6 @@ public class YACHT implements CobolRunnable {
       b_WS_CATEGORY.fillBytes(' ', 15);
       b_WS_RESULT.fillBytes ('0', 2);
       b_WS_WORKING.fillBytes('0', 15);
-      b_WS_NUM_DISTINCT_DICE.setByte('0');
       b_WS_NUMBER.setByte('0');
       b_WS_COUNT.setByte('0');
       b_WS_ABSENT.setByte('0');
@@ -268,52 +267,13 @@ public class YACHT implements CobolRunnable {
   }
 
   private Map<Integer, Integer> countDistinctDice() throws CobolStopRunException {
-    /* YACHT.cobol:103: MOVE */
-    b_WS_NUM_DISTINCT_DICE.setByte('0');
-    /* YACHT.cobol:104: PERFORM */
-    for (int j = 1; j <= 5; j++)
-    {
-      /* YACHT.cobol:105: MOVE */
-      b_WS_WORKING.getSubDataStorage(5).getSubDataStorage(j - 1).setByte('0');
-      /* YACHT.cobol:106: MOVE */
-      b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(j - 1).setByte('0');
-    }
     List<Integer> rolledDice = new ArrayList<>();
-    /* YACHT.cobol:109: PERFORM */
     for (int i = 1; i <= 5; i++)
     {
       CobolDataStorage subDataStorage = b_WS_WORKING.getSubDataStorage(i - 1);
       byte aByte = subDataStorage.getByte(0);
       int dieRoll = aByte - '0';
       rolledDice.add(dieRoll);
-      boolean dieProcessed = false;
-      /* YACHT.cobol:111: PERFORM */
-      for (int j = 1; !dieProcessed; j++)
-      {
-        /* YACHT.cobol:112: IF */
-        if (((long)(j - b_WS_NUM_DISTINCT_DICE.getNumdisp(1)) >  0L))
-        {
-          /* YACHT.cobol:113: MOVE */
-          b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)).setByte(aByte);
-          /* YACHT.cobol:114: ADD */
-          CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)), a_2).add (c_12, 4);
-          /* YACHT.cobol:115: ADD */
-          f_WS_NUM_DISTINCT_DICE.add (c_12, 4);
-          /* YACHT.cobol:116: MOVE */
-          dieProcessed = true;
-        }
-        else
-        {
-          /* YACHT.cobol:118: IF */
-          if (((long) subDataStorage.memcmp (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)), 1) == 0L))
-          {
-            /* YACHT.cobol:119: ADD */
-            CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)), a_2).add (c_12, 4);
-            /* YACHT.cobol:120: MOVE */
-            dieProcessed = true;
-          }
-        }
-      }
     }
 
     return rolledDice.stream().collect(groupingBy(r -> r))
@@ -352,7 +312,6 @@ public class YACHT implements CobolRunnable {
       b_WS_WORKING = new CobolDataStorage(15);	/* WS-WORKING */
       b_I = new CobolDataStorage(4);	/* I */
       b_J = new CobolDataStorage(4);	/* J */
-      b_WS_NUM_DISTINCT_DICE = new CobolDataStorage(1);	/* WS-NUM-DISTINCT-DICE */
       b_WS_NUMBER = new CobolDataStorage(1);	/* WS-NUMBER */
       b_WS_COUNT = new CobolDataStorage(1);	/* WS-COUNT */
       b_WS_ABSENT = new CobolDataStorage(1);	/* WS-ABSENT */
@@ -368,7 +327,6 @@ public class YACHT implements CobolRunnable {
       f_WS_DICE	= CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);	/* WS-DICE */
       f_WS_CATEGORY	= CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);	/* WS-CATEGORY */
       f_WS_RESULT	= CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);	/* WS-RESULT */
-      f_WS_NUM_DISTINCT_DICE	= CobolFieldFactory.makeCobolField(1, b_WS_NUM_DISTINCT_DICE, a_2);	/* WS-NUM-DISTINCT-DICE */
       f_WS_COUNT	= CobolFieldFactory.makeCobolField(1, b_WS_COUNT, a_2);	/* WS-COUNT */
 
       /* End of fields */
@@ -408,7 +366,6 @@ public class YACHT implements CobolRunnable {
   private CobolDataStorage b_WS_WORKING;	/* WS-WORKING */
   private CobolDataStorage b_I;	/* I */
   private CobolDataStorage b_J;	/* J */
-  private CobolDataStorage b_WS_NUM_DISTINCT_DICE;	/* WS-NUM-DISTINCT-DICE */
   private CobolDataStorage b_WS_NUMBER;	/* WS-NUMBER */
   private CobolDataStorage b_WS_COUNT;	/* WS-COUNT */
   private CobolDataStorage b_WS_ABSENT;	/* WS-ABSENT */
@@ -422,7 +379,6 @@ public class YACHT implements CobolRunnable {
   private AbstractCobolField f_WS_DICE;	/* WS-DICE */
   private AbstractCobolField f_WS_CATEGORY;	/* WS-CATEGORY */
   private AbstractCobolField f_WS_RESULT;	/* WS-RESULT */
-  private AbstractCobolField f_WS_NUM_DISTINCT_DICE;	/* WS-NUM-DISTINCT-DICE */
   private AbstractCobolField f_WS_COUNT;	/* WS-COUNT */
 
   /* End of fields */
