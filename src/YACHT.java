@@ -99,35 +99,31 @@ public class YACHT implements CobolRunnable {
 
   private void score() throws CobolStopRunException {
     /* YACHT.cobol:26: MOVE */
-    {
-      b_WS_RESULT.fillBytes (48, 2);
-    }
+    b_WS_RESULT.fillBytes (48, 2);
+
     /* YACHT.cobol:27: UNSTRING */
-    {
-      CobolString.unstringInit (f_WS_DICE, 0, 0);
-      CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
-      CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(1), a_2), 0, 0);
-      CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(2), a_2), 0, 0);
-      CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(3), a_2), 0, 0);
-      CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(4), a_2), 0, 0);
-      CobolString.unstringFinish ();
-    }
+    CobolString.unstringInit (f_WS_DICE, 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(1), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(2), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(3), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(4), a_2), 0, 0);
+    CobolString.unstringFinish ();
+
     /* YACHT.cobol:29: EVALUATE */
-    {
-      switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
-        case "yacht"           -> scoreYacht();
-        case "ones"            -> scoreNumbers(1);
-        case "twos"            -> scoreNumbers(2);
-        case "threes"          -> scoreNumbers(3);
-        case "fours"           -> scoreNumbers(4);
-        case "fives"           -> scoreNumbers(5);
-        case "sixes"           -> scoreNumbers(6);
-        case "full house"      -> scoreFullHouse();
-        case "four of a kind"  -> scoreFourOfAKind();
-        case "little straight" -> scoreStraight(6);
-        case "big straight"    -> scoreStraight(1);
-        case "choice"          -> scoreAllDice();
-      }
+    switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
+      case "yacht"           -> scoreYacht();
+      case "ones"            -> scoreNumbers(1);
+      case "twos"            -> scoreNumbers(2);
+      case "threes"          -> scoreNumbers(3);
+      case "fours"           -> scoreNumbers(4);
+      case "fives"           -> scoreNumbers(5);
+      case "sixes"           -> scoreNumbers(6);
+      case "full house"      -> scoreFullHouse();
+      case "four of a kind"  -> scoreFourOfAKind();
+      case "little straight" -> scoreStraight(6);
+      case "big straight"    -> scoreStraight(1);
+      case "choice"          -> scoreAllDice();
     }
   }
 
