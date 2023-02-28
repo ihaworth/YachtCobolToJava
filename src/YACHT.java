@@ -120,7 +120,7 @@ public class YACHT implements CobolRunnable {
           },
           /* YACHT */
           new CobolControl(3, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
               /* YACHT.cobol:26: MOVE */
               {
                 b_WS_RESULT.fillBytes (48, 2);
@@ -176,7 +176,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE-FULL-HOUSE */
           new CobolControl(6, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
               return scoreFullHouse();
             }
           },
@@ -320,7 +320,7 @@ public class YACHT implements CobolRunnable {
     return Optional.of(contList[8]);
   }
 
-  private Optional<CobolControl> scoreFullHouse() throws CobolStopRunException, CobolGoBackException {
+  private Optional<CobolControl> scoreFullHouse() throws CobolStopRunException {
     /* YACHT.cobol:62: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     countDistinctDice();
