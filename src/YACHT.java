@@ -330,7 +330,7 @@ public class YACHT implements CobolRunnable {
       {
         /* YACHT.cobol:66: PERFORM */
         /* PERFORM SCORE-ALL-DICE */
-        CobolControl.perform(contList, 9).run();
+        scoreAllDice();
       }
     }
 
