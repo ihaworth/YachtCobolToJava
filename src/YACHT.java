@@ -201,7 +201,7 @@ public class YACHT implements CobolRunnable {
           /* CHECK-VALUE-ABSENT */
           new CobolControl(10, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException {
-              return checkValueAbsent();
+              return Optional.empty();
             }
           },
           /* COUNT-DISTINCT-DICE */
@@ -240,8 +240,7 @@ public class YACHT implements CobolRunnable {
       {
         /* YACHT.cobol:82: PERFORM */
         /* PERFORM CHECK-VALUE-ABSENT */
-        b_WS_ABSENT.setByte('0' + absentRoll);
-        checkValueAbsent();
+        checkValueAbsent(absentRoll);
         /* YACHT.cobol:83: IF */
         {
           if (((long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 89) == 0L))
@@ -256,7 +255,8 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private Optional<CobolControl> checkValueAbsent() {
+  private Optional<CobolControl> checkValueAbsent(int absentRoll) {
+    b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:94: MOVE */
     {
       b_WS_VALUE_ABSENT.setByte(89);
