@@ -213,33 +213,6 @@ public class YACHT implements CobolRunnable {
           CobolControl.pure()
   };
 
-  private Optional<CobolControl> checkValueAbsent() {
-    /* YACHT.cobol:94: MOVE */
-    {
-      b_WS_VALUE_ABSENT.setByte(89);
-    }
-    /* YACHT.cobol:95: PERFORM */
-    b_I.set(1);
-    while ((long)(b_I.intValue() - 5) <= 0L && (long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 78) != 0L)
-    {
-      {
-        /* YACHT.cobol:97: IF */
-        {
-          if (((long)b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).memcmp (b_WS_ABSENT, 1) == 0L))
-          {
-            /* YACHT.cobol:98: MOVE */
-            {
-              b_WS_VALUE_ABSENT.setByte(78);
-            }
-          }
-        }
-      }
-      b_I.set(b_I.intValue() + 1);
-    }
-
-    return Optional.of(contList[11]);
-  }
-
   private Optional<CobolControl> scoreAllDice() throws CobolStopRunException {
     /* YACHT.cobol:89: PERFORM */
     b_I.set(1);
@@ -281,6 +254,33 @@ public class YACHT implements CobolRunnable {
         }
       }
     }
+  }
+
+  private Optional<CobolControl> checkValueAbsent() {
+    /* YACHT.cobol:94: MOVE */
+    {
+      b_WS_VALUE_ABSENT.setByte(89);
+    }
+    /* YACHT.cobol:95: PERFORM */
+    b_I.set(1);
+    while ((long)(b_I.intValue() - 5) <= 0L && (long)(Byte.toUnsignedInt(b_WS_VALUE_ABSENT.getByte(0)) - 78) != 0L)
+    {
+      {
+        /* YACHT.cobol:97: IF */
+        {
+          if (((long)b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).memcmp (b_WS_ABSENT, 1) == 0L))
+          {
+            /* YACHT.cobol:98: MOVE */
+            {
+              b_WS_VALUE_ABSENT.setByte(78);
+            }
+          }
+        }
+      }
+      b_I.set(b_I.intValue() + 1);
+    }
+
+    return Optional.of(contList[11]);
   }
 
   private Optional<CobolControl> scoreFourOfAKind() throws CobolStopRunException {
