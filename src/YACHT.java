@@ -177,7 +177,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE_NUMBERS */
           new CobolControl(5, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException {
               return Optional.empty();
             }
           },
@@ -343,7 +343,7 @@ public class YACHT implements CobolRunnable {
     return Optional.of(contList[7]);
   }
 
-  private Optional<CobolControl> scoreNumbers(int x) throws CobolStopRunException {
+  private void scoreNumbers(int x) throws CobolStopRunException {
     b_WS_NUMBER.setByte('0' + x);
     /* YACHT.cobol:53: MOVE */
     {
@@ -379,7 +379,6 @@ public class YACHT implements CobolRunnable {
       }
     }
 
-    return Optional.of(contList[6]);
   }
 
   private Optional<CobolControl> scoreYacht() throws CobolStopRunException {
