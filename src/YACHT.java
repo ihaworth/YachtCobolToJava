@@ -240,7 +240,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE-YACHT */
           new CobolControl(4, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
               /* YACHT.cobol:46: PERFORM */
               /* PERFORM COUNT-DISTINCT-DICE */
               countDistinctDice();
@@ -319,7 +319,7 @@ public class YACHT implements CobolRunnable {
           },
           /* SCORE-FOUR-OF-A-KIND */
           new CobolControl(7, CobolControl.LabelType.label) {
-            public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
+            public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
               /* YACHT.cobol:70: PERFORM */
               /* PERFORM COUNT-DISTINCT-DICE */
               countDistinctDice();
