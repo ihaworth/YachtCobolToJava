@@ -138,30 +138,15 @@ public class YACHT implements CobolRunnable {
               /* YACHT.cobol:29: EVALUATE */
               {
                 switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
-                  case "yacht" ->
-                          scoreYacht();
-                  case "ones" -> {
-                    scoreNumbers(1);
-                  }
-                  case "twos" -> {
-                    scoreNumbers(2);
-                  }
-                  case "threes" -> {
-                    scoreNumbers(3);
-                  }
-                  case "fours" -> {
-                    scoreNumbers(4);
-                  }
-                  case "fives" -> {
-                    scoreNumbers(5);
-                  }
-                  case "sixes" -> {
-                    scoreNumbers(6);
-                  }
-                  case "full house" ->
-                          scoreFullHouse();
-                  case "four of a kind" ->
-                          scoreFourOfAKind();
+                  case "yacht"           -> scoreYacht();
+                  case "ones"            -> scoreNumbers(1);
+                  case "twos"            -> scoreNumbers(2);
+                  case "threes"          -> scoreNumbers(3);
+                  case "fours"           -> scoreNumbers(4);
+                  case "fives"           -> scoreNumbers(5);
+                  case "sixes"           -> scoreNumbers(6);
+                  case "full house"      -> scoreFullHouse();
+                  case "four of a kind"  -> scoreFourOfAKind();
                   case "little straight" -> {
                     b_WS_ABSENT.setByte(54);
                     scoreStraight();
