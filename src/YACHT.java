@@ -213,7 +213,7 @@ public class YACHT implements CobolRunnable {
           CobolControl.pure()
   };
 
-  private Optional<CobolControl> scoreAllDice() throws CobolStopRunException {
+  private void scoreAllDice() throws CobolStopRunException {
     /* YACHT.cobol:89: PERFORM */
     b_I.set(1);
     while ((long)(b_I.intValue() - 5) <= 0L)
@@ -226,8 +226,6 @@ public class YACHT implements CobolRunnable {
       }
       b_I.set(b_I.intValue() + 1);
     }
-
-    return Optional.of(contList[10]);
   }
 
   private void scoreStraight(int absentRoll) throws CobolStopRunException {
@@ -281,7 +279,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private Optional<CobolControl> scoreFourOfAKind() throws CobolStopRunException {
+  private void scoreFourOfAKind() throws CobolStopRunException {
     /* YACHT.cobol:70: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     countDistinctDice();
@@ -316,8 +314,6 @@ public class YACHT implements CobolRunnable {
         }
       }
     }
-
-    return Optional.of(contList[8]);
   }
 
   private Optional<CobolControl> scoreFullHouse() throws CobolStopRunException {
@@ -375,7 +371,7 @@ public class YACHT implements CobolRunnable {
 
   }
 
-  private Optional<CobolControl> scoreYacht() throws CobolStopRunException {
+  private void scoreYacht() throws CobolStopRunException {
     /* YACHT.cobol:46: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     countDistinctDice();
@@ -389,11 +385,9 @@ public class YACHT implements CobolRunnable {
         }
       }
     }
-
-    return Optional.of(contList[5]);
   }
 
-  private Optional<CobolControl> countDistinctDice() throws CobolStopRunException {
+  private void countDistinctDice() throws CobolStopRunException {
     /* YACHT.cobol:103: MOVE */
     {
       b_WS_NUM_DISTINCT_DICE.setByte(48);
@@ -473,7 +467,6 @@ public class YACHT implements CobolRunnable {
       }
       b_I.set(b_I.intValue() + 1);
     }
-    return Optional.of(CobolControl.pure());
   }
 
   public void execEntry(int start) throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
