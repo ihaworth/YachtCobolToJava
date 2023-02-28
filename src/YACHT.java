@@ -1,8 +1,18 @@
-import jp.osscons.opensourcecobol.libcobj.common.*;
+import jp.osscons.opensourcecobol.libcobj.call.CobolRunnable;
+import jp.osscons.opensourcecobol.libcobj.common.CobolModule;
+import jp.osscons.opensourcecobol.libcobj.common.CobolString;
+import jp.osscons.opensourcecobol.libcobj.common.CobolUtil;
 import jp.osscons.opensourcecobol.libcobj.data.*;
-import jp.osscons.opensourcecobol.libcobj.exceptions.*;
-import jp.osscons.opensourcecobol.libcobj.call.*;
-import jp.osscons.opensourcecobol.libcobj.ui.*;
+import jp.osscons.opensourcecobol.libcobj.exceptions.CobolGoBackException;
+import jp.osscons.opensourcecobol.libcobj.exceptions.CobolStopRunException;
+import jp.osscons.opensourcecobol.libcobj.ui.CobolResultSet;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toMap;
 
 public class YACHT implements CobolRunnable {
 
@@ -273,7 +283,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void countDistinctDice() throws CobolStopRunException {
+  private Map<Integer, Integer> countDistinctDice() throws CobolStopRunException {
     /* YACHT.cobol:103: MOVE */
     b_WS_NUM_DISTINCT_DICE.setByte('0');
     /* YACHT.cobol:104: PERFORM */
@@ -284,9 +294,14 @@ public class YACHT implements CobolRunnable {
       /* YACHT.cobol:106: MOVE */
       b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(j - 1).setByte('0');
     }
+    List<Integer> rolledDice = new ArrayList<>();
     /* YACHT.cobol:109: PERFORM */
     for (int i = 1; i <= 5; i++)
     {
+      CobolDataStorage subDataStorage = b_WS_WORKING.getSubDataStorage(i - 1);
+      byte aByte = subDataStorage.getByte(0);
+      int dieRoll = aByte - '0';
+      rolledDice.add(dieRoll);
       boolean dieProcessed = false;
       /* YACHT.cobol:111: PERFORM */
       for (int j = 1; !dieProcessed; j++)
@@ -295,7 +310,7 @@ public class YACHT implements CobolRunnable {
         if (((long)(j - b_WS_NUM_DISTINCT_DICE.getNumdisp(1)) >  0L))
         {
           /* YACHT.cobol:113: MOVE */
-          b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)).setByte(b_WS_WORKING.getSubDataStorage(i - 1).getByte(0));
+          b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)).setByte(aByte);
           /* YACHT.cobol:114: ADD */
           CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)), a_2).add (c_12, 4);
           /* YACHT.cobol:115: ADD */
@@ -306,7 +321,7 @@ public class YACHT implements CobolRunnable {
         else
         {
           /* YACHT.cobol:118: IF */
-          if (((long)b_WS_WORKING.getSubDataStorage(i - 1).memcmp (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)), 1) == 0L))
+          if (((long) subDataStorage.memcmp (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)), 1) == 0L))
           {
             /* YACHT.cobol:119: ADD */
             CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)), a_2).add (c_12, 4);
@@ -316,6 +331,10 @@ public class YACHT implements CobolRunnable {
         }
       }
     }
+
+    return rolledDice.stream().collect(groupingBy(r -> r))
+            .entrySet().stream().collect(toMap(e -> e.getKey(),
+                                               e -> e.getValue().size()));
   }
 
   public static void main(String[] args)
