@@ -141,7 +141,7 @@ public class YACHT implements CobolRunnable {
                   case "yacht" ->
                     /* YACHT.cobol:30: PERFORM */
                     /* PERFORM SCORE-YACHT */
-                          CobolControl.perform(contList, 4).run();
+                          scoreYacht();
                   case "ones" -> {
                     /* YACHT.cobol:31: MOVE */
                     {
@@ -241,21 +241,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-YACHT */
           new CobolControl(4, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              /* YACHT.cobol:46: PERFORM */
-              /* PERFORM COUNT-DISTINCT-DICE */
-              countDistinctDice();
-              /* YACHT.cobol:47: IF */
-              {
-                if (((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 1) == 0L))
-                {
-                  /* YACHT.cobol:48: MOVE */
-                  {
-                    b_WS_RESULT.setBytes ("50", 2);
-                  }
-                }
-              }
-
-              return Optional.of(contList[5]);
+              return scoreYacht();
             }
           },
           /* SCORE_NUMBERS */
@@ -443,6 +429,24 @@ public class YACHT implements CobolRunnable {
           },
           CobolControl.pure()
   };
+
+  private Optional<CobolControl> scoreYacht() throws CobolStopRunException {
+    /* YACHT.cobol:46: PERFORM */
+    /* PERFORM COUNT-DISTINCT-DICE */
+    countDistinctDice();
+    /* YACHT.cobol:47: IF */
+    {
+      if (((long)b_WS_NUM_DISTINCT_DICE.cmpNumdisp (1, 1) == 0L))
+      {
+        /* YACHT.cobol:48: MOVE */
+        {
+          b_WS_RESULT.setBytes ("50", 2);
+        }
+      }
+    }
+
+    return Optional.of(contList[5]);
+  }
 
   private Optional<CobolControl> countDistinctDice() throws CobolStopRunException {
     /* YACHT.cobol:103: MOVE */
