@@ -148,12 +148,10 @@ public class YACHT implements CobolRunnable {
                   case "full house"      -> scoreFullHouse();
                   case "four of a kind"  -> scoreFourOfAKind();
                   case "little straight" -> {
-                    b_WS_ABSENT.setByte('0' + 6);
-                    scoreStraight();
+                    scoreStraight(6);
                   }
                   case "big straight" -> {
-                    b_WS_ABSENT.setByte('0' + 1);
-                    scoreStraight();
+                    scoreStraight(1);
                   }
                   case "choice" ->
                           scoreAllDice();
@@ -196,7 +194,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-STRIGHT */
           new CobolControl(8, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolGoBackException, CobolStopRunException {
-              return scoreStraight();
+              return Optional.empty();
             }
           },
           /* SCORE-ALL-DICE */
@@ -260,7 +258,8 @@ public class YACHT implements CobolRunnable {
     return Optional.of(contList[10]);
   }
 
-  private Optional<CobolControl> scoreStraight() throws CobolStopRunException, CobolGoBackException {
+  private Optional<CobolControl> scoreStraight(int absentRoll) throws CobolStopRunException, CobolGoBackException {
+    b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:80: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
     countDistinctDice();
