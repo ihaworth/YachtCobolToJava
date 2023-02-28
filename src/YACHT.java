@@ -186,20 +186,19 @@ public class YACHT implements CobolRunnable {
       if (diceCounts.size() <= 2)
       {
         /* YACHT.cobol:72: PERFORM */
-        b_J.set(1);
-        while ((long)(b_J.intValue() - b_WS_NUM_DISTINCT_DICE.getNumdisp(1)) <= 0L)
+        for (int j = 1; j <= diceCounts.size(); j++)
         {
           {
             /* YACHT.cobol:73: IF */
             {
-              if (((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((b_J.intValue() - 1)).cmpNumdisp (1, 4) >= 0L))
+              if (((long)b_WS_WORKING.getSubDataStorage(10).getSubDataStorage((j - 1)).cmpNumdisp (1, 4) >= 0L))
               {
                 /* YACHT.cobol:74: COMPUTE */
                 {
                   {
                     {
                       d0.set (4);
-                      d1.set (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((b_J.intValue() - 1)).getNumdisp(1));
+                      d1.set (b_WS_WORKING.getSubDataStorage(5).getSubDataStorage((j - 1)).getNumdisp(1));
                       d0.mul (d1);
                       d0.getField (f_WS_RESULT, 4);
                     }
@@ -208,7 +207,6 @@ public class YACHT implements CobolRunnable {
               }
             }
           }
-          b_J.set(b_J.intValue() + 1);
         }
       }
     }
