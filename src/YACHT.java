@@ -165,7 +165,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-YACHT */
           new CobolControl(4, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              return scoreYacht();
+              return Optional.empty();
             }
           },
           /* SCORE_NUMBERS */
@@ -183,7 +183,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-FOUR-OF-A-KIND */
           new CobolControl(7, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              return scoreFourOfAKind();
+              return Optional.empty();
             }
           },
           /* SCORE-STRIGHT */
@@ -195,7 +195,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE-ALL-DICE */
           new CobolControl(9, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              return scoreAllDice();
+              return Optional.empty();
             }
           },
           /* CHECK-VALUE-ABSENT */
@@ -207,7 +207,7 @@ public class YACHT implements CobolRunnable {
           /* COUNT-DISTINCT-DICE */
           new CobolControl(11, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              return countDistinctDice();
+              return Optional.empty();
             }
           },
           CobolControl.pure()
