@@ -141,28 +141,22 @@ public class YACHT implements CobolRunnable {
                   case "yacht" ->
                           scoreYacht();
                   case "ones" -> {
-                    b_WS_NUMBER.setByte('0' + 1);
-                    scoreNumbers();
+                    scoreNumbers(1);
                   }
                   case "twos" -> {
-                    b_WS_NUMBER.setByte('0' + 2);
-                    scoreNumbers();
+                    scoreNumbers(2);
                   }
                   case "threes" -> {
-                    b_WS_NUMBER.setByte('0' + 3);
-                    scoreNumbers();
+                    scoreNumbers(3);
                   }
                   case "fours" -> {
-                    b_WS_NUMBER.setByte('0' + 4);
-                    scoreNumbers();
+                    scoreNumbers(4);
                   }
                   case "fives" -> {
-                    b_WS_NUMBER.setByte('0' + 5);
-                    scoreNumbers();
+                    scoreNumbers(5);
                   }
                   case "sixes" -> {
-                    b_WS_NUMBER.setByte('0' + 6);
-                    scoreNumbers();
+                    scoreNumbers(6);
                   }
                   case "full house" ->
                           scoreFullHouse();
@@ -199,7 +193,7 @@ public class YACHT implements CobolRunnable {
           /* SCORE_NUMBERS */
           new CobolControl(5, CobolControl.LabelType.label) {
             public Optional<CobolControl> run() throws CobolRuntimeException, CobolStopRunException {
-              return scoreNumbers();
+              return Optional.empty();
             }
           },
           /* SCORE-FULL-HOUSE */
@@ -364,7 +358,8 @@ public class YACHT implements CobolRunnable {
     return Optional.of(contList[7]);
   }
 
-  private Optional<CobolControl> scoreNumbers() throws CobolStopRunException {
+  private Optional<CobolControl> scoreNumbers(int x) throws CobolStopRunException {
+    b_WS_NUMBER.setByte('0' + x);
     /* YACHT.cobol:53: MOVE */
     {
       b_WS_COUNT.setByte(48);
