@@ -230,7 +230,7 @@ public class YACHT implements CobolRunnable {
     return Optional.of(contList[10]);
   }
 
-  private void scoreStraight(int absentRoll) throws CobolStopRunException, CobolGoBackException {
+  private void scoreStraight(int absentRoll) throws CobolStopRunException {
     b_WS_ABSENT.setByte('0' + absentRoll);
     /* YACHT.cobol:80: PERFORM */
     /* PERFORM COUNT-DISTINCT-DICE */
