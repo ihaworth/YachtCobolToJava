@@ -67,7 +67,7 @@ public class YACHT implements CobolRunnable {
       b_J.set(1);
       b_WS_DICE.fillBytes('0', 5);
       b_WS_CATEGORY.fillBytes(' ', 15);
-      b_WS_RESULT.fillBytes (48, 2);
+      b_WS_RESULT.fillBytes ('0', 2);
       b_WS_WORKING.fillBytes('0', 15);
       b_WS_NUM_DISTINCT_DICE.setByte('0');
       b_WS_NUMBER.setByte('0');
@@ -97,7 +97,7 @@ public class YACHT implements CobolRunnable {
 
   private void score() throws CobolStopRunException {
     /* YACHT.cobol:26: MOVE */
-    b_WS_RESULT.fillBytes (48, 2);
+    b_WS_RESULT.fillBytes ('0', 2);
 
     /* YACHT.cobol:27: UNSTRING */
     CobolString.unstringInit (f_WS_DICE, 0, 0);
@@ -223,7 +223,7 @@ public class YACHT implements CobolRunnable {
     b_WS_NUMBER.setByte('0' + number);
     /* YACHT.cobol:53: MOVE */
     {
-      b_WS_COUNT.setByte(48);
+      b_WS_COUNT.setByte('0');
     }
     /* YACHT.cobol:54: PERFORM */
     b_I.set(1);
@@ -275,14 +275,14 @@ public class YACHT implements CobolRunnable {
 
   private void countDistinctDice() throws CobolStopRunException {
     /* YACHT.cobol:103: MOVE */
-    b_WS_NUM_DISTINCT_DICE.setByte(48);
+    b_WS_NUM_DISTINCT_DICE.setByte('0');
     /* YACHT.cobol:104: PERFORM */
     for (int j = 1; j <= 5; j++)
     {
       /* YACHT.cobol:105: MOVE */
-      b_WS_WORKING.getSubDataStorage(5).getSubDataStorage(j - 1).setByte(48);
+      b_WS_WORKING.getSubDataStorage(5).getSubDataStorage(j - 1).setByte('0');
       /* YACHT.cobol:106: MOVE */
-      b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(j - 1).setByte(48);
+      b_WS_WORKING.getSubDataStorage(10).getSubDataStorage(j - 1).setByte('0');
     }
     /* YACHT.cobol:109: PERFORM */
     for (int i = 1; i <= 5; i++)
