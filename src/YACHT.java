@@ -8,13 +8,12 @@ import java.util.Optional;
 public class YACHT implements CobolRunnable {
 
   private boolean initialized = false;
-  private CobolModule module;
-  private static boolean cobolInitialized = false;
+  private static final boolean cobolInitialized = false;
 
 
   @Override
   public int run(CobolDataStorage... argStorages) {
-    return YACHT_(0, argStorages);
+    return YACHT_(0);
   }
 
   @Override
@@ -32,12 +31,12 @@ public class YACHT implements CobolRunnable {
     return new CobolResultSet(returnCode);
   }
 
-  public int YACHT_ (int entry, CobolDataStorage ...argStorages) {
+  public int YACHT_ (int entry) {
     return this.run_module(entry);
   }
 
   int run_module (int entry) {
-    this.module = new CobolModule(null, null, null, null, 0, '.', '$', ',', 1, 1, 1, 0, null );
+    CobolModule module = new CobolModule(null, null, null, null, 0, '.', '$', ',', 1, 1, 1, 0, null);
 
     /* Start of function code */
 
@@ -697,8 +696,6 @@ public class YACHT implements CobolRunnable {
   /* End of fields */
 
 
-  private static AbstractCobolField f_native;
-
   /* Constants */
 
   private AbstractCobolField c_12;
@@ -721,32 +718,6 @@ public class YACHT implements CobolRunnable {
   private CobolFieldAttribute a_2;
   private CobolFieldAttribute a_1;
 
-
-
-
-  private void cobolPushCallStackList(String programId)
-  {
-  }
-
-  private void cobolFatalError(int errorCode)
-  {
-  }
-
-  private void cobolCheckVersion(String sourceFile, int packageVersion, int patchVersion)
-  {
-  }
-
-  private void cobolSetCancel(String programId, Object a, Object b)
-  {
-  }
-
-  private void cobolPopCallStackList()
-  {
-  }
-
-  private static CobolDataStorage makeCobolDataStorage(byte ...bytes) {
-    return new CobolDataStorage(bytes);
-  }
 
   public int score(String dice, String category) {
     run_module(1);
