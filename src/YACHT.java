@@ -195,33 +195,22 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreFullHouse() throws CobolStopRunException {
-    /* YACHT.cobol:62: PERFORM */
-    /* PERFORM COUNT-DISTINCT-DICE */
     Map<Integer, Integer> diceCounts = countDistinctDice();
-    /* YACHT.cobol:63: IF */
+    int numOfFirstDie = diceCounts.values().stream().findFirst().get();
+    if (diceCounts.size() == 2 &&
+            numOfFirstDie == 2 ||
+            numOfFirstDie == 3)
     {
-      Integer numOfFirstDie = diceCounts.values().stream().findFirst().get();
-      if (diceCounts.size() == 2 &&
-              numOfFirstDie == 2 ||
-              numOfFirstDie == 3)
-      {
-        /* YACHT.cobol:66: PERFORM */
-        /* PERFORM SCORE-ALL-DICE */
-        scoreAllDice();
-      }
+      scoreAllDice();
     }
   }
 
   private void scoreNumbers(int number) throws CobolStopRunException {
     b_WS_NUMBER.setByte('0' + number);
-    /* YACHT.cobol:53: MOVE */
     b_WS_COUNT.setByte('0');
-    /* YACHT.cobol:54: PERFORM */
     b_I.set(1);
     while ((long)(b_I.intValue() - 5) <= 0L)
     {
-      /* YACHT.cobol:55: IF */
-      /* YACHT.cobol:56: ADD */
       if (((long)b_WS_WORKING.getSubDataStorage((b_I.intValue() - 1)).memcmp (b_WS_NUMBER, 1) == 0L)) {
         f_WS_COUNT.add(c_12, 4);
       }
