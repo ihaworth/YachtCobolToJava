@@ -151,7 +151,7 @@ public class YACHT implements CobolRunnable {
       boolean valueIsAbsent = checkValueAbsent(absentRoll);
       if (valueIsAbsent)
       {
-        b_WS_RESULT.setBytes ("30", 2);
+        b_WS_RESULT.setBytes ("" + 30, 2);
       }
     }
   }
@@ -215,7 +215,7 @@ public class YACHT implements CobolRunnable {
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 1)
     {
-      b_WS_RESULT.setBytes ("50", 2);
+      b_WS_RESULT.setBytes ("" + 50, 2);
     }
   }
 
