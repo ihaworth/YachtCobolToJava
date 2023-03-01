@@ -35,6 +35,10 @@ public class YACHT implements CobolRunnable {
     initialize();
     /* PROCEDURE DIVISION */
     /* Entry dispatch */
+    execute();
+  }
+
+  private void execute() {
     List<Integer> diceRolls = getDiceRolls();
     String category = this.f_WS_CATEGORY.getString().trim();
 
