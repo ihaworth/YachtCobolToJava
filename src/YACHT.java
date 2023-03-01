@@ -161,10 +161,8 @@ public class YACHT implements CobolRunnable {
       {
         int count = diceCounts.get(dieValue);
         if (count >= 4)
-        {
           return 4 * dieValue;
-        }
-    }
+      }
     }
     return 0;
   }
