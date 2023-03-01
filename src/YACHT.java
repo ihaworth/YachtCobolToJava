@@ -164,7 +164,7 @@ public class YACHT implements CobolRunnable {
         {
           return 4 * dieValue;
         }
-      }
+    }
     }
     return 0;
   }
@@ -180,15 +180,9 @@ public class YACHT implements CobolRunnable {
     return 0;
   }
 
-  private static int scoreNumbers(int number, List<Integer> diceRolls) {
-    int count = 0;
-    for (int i = 0; i < 5; i++)
-    {
-      if (diceRolls.get(i) == number) {
-        count++;
-      }
-    }
-    return count * number;
+  private static int scoreNumbers(int value, List<Integer> diceRolls) {
+    int numberOfRollsOfValue = (int)diceRolls.stream().filter(r -> r == value).count();
+    return numberOfRollsOfValue * value;
   }
 
   private static int scoreYacht(List<Integer> diceRolls) {
