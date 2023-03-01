@@ -130,8 +130,8 @@ public class YACHT implements CobolRunnable {
       case "sixes"           -> scoreNumbers(6, diceRolls);
       case "full house"      -> scoreFullHouse(diceRolls);
       case "four of a kind"  -> scoreFourOfAKind(diceRolls);
-      case "little straight" -> scoreStraight(6, diceRolls);
-      case "big straight"    -> scoreStraight(1, diceRolls);
+      case "little straight" -> setResult(scoreStraight(6, diceRolls));
+      case "big straight"    -> setResult(scoreStraight(1, diceRolls));
       case "choice"          -> setResult(scoreAllDice(diceRolls));
     }
   }
@@ -148,7 +148,7 @@ public class YACHT implements CobolRunnable {
     b_WS_RESULT.setBytes("%02d".formatted(score), 2);
   }
 
-  private void scoreStraight(int absentRoll, List<Integer> diceRolls) {
+  private static int scoreStraight(int absentRoll, List<Integer> diceRolls) {
     int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 5)
@@ -159,10 +159,10 @@ public class YACHT implements CobolRunnable {
         score = 30;
       }
     }
-    setResult(score);
+    return score;
   }
 
-  private boolean checkValueAbsent(int absentRoll, List<Integer> diceRolls) {
+  private static boolean checkValueAbsent(int absentRoll, List<Integer> diceRolls) {
     for (int i = 0; i < 5; i++)
     {
       if (diceRolls.get(i) == absentRoll) {
@@ -216,7 +216,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private Map<Integer, Integer> countDistinctDice(List<Integer> rolledDice) {
+  private static Map<Integer, Integer> countDistinctDice(List<Integer> rolledDice) {
     return rolledDice.stream().collect(groupingBy(r -> r))
             .entrySet().stream().collect(toMap(e -> e.getKey(),
                                                e -> e.getValue().size()));
