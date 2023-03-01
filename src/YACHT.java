@@ -92,15 +92,6 @@ public class YACHT implements CobolRunnable {
   }
 
   private void score() throws CobolStopRunException {
-    /* YACHT.cobol:27: UNSTRING */
-    CobolString.unstringInit (f_WS_DICE, 0, 0);
-    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
-    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(1), a_2), 0, 0);
-    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(2), a_2), 0, 0);
-    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(3), a_2), 0, 0);
-    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(4), a_2), 0, 0);
-    CobolString.unstringFinish ();
-
     final List<Integer> diceRolls = getDiceRolls();
 
     /* YACHT.cobol:29: EVALUATE */
@@ -185,6 +176,15 @@ public class YACHT implements CobolRunnable {
   }
 
   private List<Integer> getDiceRolls() {
+    /* YACHT.cobol:27: UNSTRING */
+    CobolString.unstringInit (f_WS_DICE, 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(1), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(2), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(3), a_2), 0, 0);
+    CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(4), a_2), 0, 0);
+    CobolString.unstringFinish ();
+
     List<Integer> rolledDice = new ArrayList<>();
     for (int i = 0; i < 5; i++)
     {
