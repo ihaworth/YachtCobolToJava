@@ -148,7 +148,7 @@ public class YACHT implements CobolRunnable {
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 5)
     {
-      boolean valueIsAbsent = checkValueAbsent(absentRoll);
+      boolean valueIsAbsent = checkValueAbsent(absentRoll, diceRolls);
       if (valueIsAbsent)
       {
         b_WS_RESULT.setBytes ("" + 30, 2);
@@ -156,11 +156,10 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private boolean checkValueAbsent(int absentRoll) {
-    b_WS_ABSENT.setByte('0' + absentRoll);
+  private boolean checkValueAbsent(int absentRoll, List<Integer> diceRolls) {
     for (int i = 0; i < 5; i++)
     {
-      if (((long)b_WS_WORKING.getSubDataStorage(i).memcmp (b_WS_ABSENT, 1) == 0L)) {
+      if (diceRolls.get(i) == absentRoll) {
         return false;
       }
     }
