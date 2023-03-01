@@ -55,10 +55,6 @@ public class YACHT implements CobolRunnable {
     		CobolDecimal.cobInitNumeric();
     		return 0;
     	}
-    	d0.clear();
-    	d0.setScale(0);
-    	d1.clear();
-    	d1.setScale(0);
     	this.initialized = false;
     	return 0;
     }
@@ -68,10 +64,6 @@ public class YACHT implements CobolRunnable {
 
     /* Initialize program */
     if (!this.initialized) {
-      /* Initialize decimal numbers */
-      d0.decimalInit();
-      d1.decimalInit();
-
       b_RETURN_CODE.set(0);
       b_WS_DICE.fillBytes('0', 5);
       b_WS_CATEGORY.fillBytes(' ', 15);
@@ -221,32 +213,20 @@ public class YACHT implements CobolRunnable {
   public void init()
   {
     try {
-      /* Decimal structures */
-
-      d0 = new CobolDecimal();
-      d1 = new CobolDecimal();
-
       /* Data storage */
-
-      /* PROGRAM-ID : YACHT */
       b_RETURN_CODE = new CobolDataStorage(4);	/* RETURN-CODE */
       b_WS_DICE = new CobolDataStorage(5);	/* WS-DICE */
       b_WS_CATEGORY = new CobolDataStorage(15);	/* WS-CATEGORY */
       b_WS_RESULT = new CobolDataStorage(2);	/* WS-RESULT */
       b_WS_WORKING = new CobolDataStorage(15);	/* WS-WORKING */
-
       /* End of data storage */
-
 
       initAttr();
 
       /* Fields */
-
-      /* PROGRAM-ID : YACHT */
       f_WS_DICE	= CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);	/* WS-DICE */
       f_WS_CATEGORY	= CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);	/* WS-CATEGORY */
       f_WS_RESULT	= CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);	/* WS-RESULT */
-
       /* End of fields */
 
     } catch(Exception e) {
@@ -256,44 +236,28 @@ public class YACHT implements CobolRunnable {
 
   private void initAttr() {
     /* Attributes */
-
     a_1 = new CobolFieldAttribute (16, 5, 0, 0, null);
     a_2 = new CobolFieldAttribute (16, 1, 0, 0, null);
     a_3 = new CobolFieldAttribute (33, 0, 0, 0, null);
     a_4 = new CobolFieldAttribute (16, 2, 0, 0, null);
   }
 
-  /* Decimal structures */
-
-  private CobolDecimal d0;
-  private CobolDecimal d1;
-
   /* Data storage */
-
-  /* PROGRAM-ID : YACHT */
   private CobolDataStorage b_RETURN_CODE;	/* RETURN-CODE */
   private CobolDataStorage b_WS_DICE;	/* WS-DICE */
   private CobolDataStorage b_WS_CATEGORY;	/* WS-CATEGORY */
   private CobolDataStorage b_WS_RESULT;	/* WS-RESULT */
   private CobolDataStorage b_WS_WORKING;	/* WS-WORKING */
-
   /* End of data storage */
 
 
   /* Fields */
-
-  /* PROGRAM-ID : YACHT */
   private AbstractCobolField f_WS_DICE;	/* WS-DICE */
   private AbstractCobolField f_WS_CATEGORY;	/* WS-CATEGORY */
   private AbstractCobolField f_WS_RESULT;	/* WS-RESULT */
-
   /* End of fields */
 
-
-  /* Constants */
-
   /* Attributes */
-
   private CobolFieldAttribute a_4;
   private CobolFieldAttribute a_3;
   private CobolFieldAttribute a_2;
