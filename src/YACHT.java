@@ -117,19 +117,21 @@ public class YACHT implements CobolRunnable {
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(4), a_2), 0, 0);
     CobolString.unstringFinish ();
 
+    final List<Integer> diceRolls = getDiceRolls();
+
     /* YACHT.cobol:29: EVALUATE */
     switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
-      case "yacht"           -> scoreYacht(getDiceRolls());
+      case "yacht"           -> scoreYacht(diceRolls);
       case "ones"            -> scoreNumbers(1);
       case "twos"            -> scoreNumbers(2);
       case "threes"          -> scoreNumbers(3);
       case "fours"           -> scoreNumbers(4);
       case "fives"           -> scoreNumbers(5);
       case "sixes"           -> scoreNumbers(6);
-      case "full house"      -> scoreFullHouse(getDiceRolls());
-      case "four of a kind"  -> scoreFourOfAKind(getDiceRolls());
-      case "little straight" -> scoreStraight(6, getDiceRolls());
-      case "big straight"    -> scoreStraight(1, getDiceRolls());
+      case "full house"      -> scoreFullHouse(diceRolls);
+      case "four of a kind"  -> scoreFourOfAKind(diceRolls);
+      case "little straight" -> scoreStraight(6, diceRolls);
+      case "big straight"    -> scoreStraight(1, diceRolls);
       case "choice"          -> scoreAllDice();
     }
   }
