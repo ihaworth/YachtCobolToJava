@@ -188,13 +188,15 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreFullHouse(List<Integer> diceRolls) {
+    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 2) {
       int numOfFirstDie = diceCounts.values().stream().findFirst().get();
       if (numOfFirstDie == 2 || numOfFirstDie == 3) {
-        setResult(scoreAllDice(diceRolls));
+        score = scoreAllDice(diceRolls);
       }
     }
+    setResult(score);
   }
 
   private void scoreNumbers(int number, List<Integer> diceRolls) {
