@@ -132,11 +132,11 @@ public class YACHT implements CobolRunnable {
       case "four of a kind"  -> scoreFourOfAKind(diceRolls);
       case "little straight" -> scoreStraight(6, diceRolls);
       case "big straight"    -> scoreStraight(1, diceRolls);
-      case "choice"          -> scoreAllDice();
+      case "choice"          -> scoreAllDice(diceRolls);
     }
   }
 
-  private void scoreAllDice() throws CobolStopRunException {
+  private void scoreAllDice(List<Integer> diceRolls) throws CobolStopRunException {
     for (int i = 0; i < 5; i++) {
       f_WS_RESULT.add(CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(i), a_2), 4);
     }
@@ -188,7 +188,7 @@ public class YACHT implements CobolRunnable {
     if (diceCounts.size() == 2) {
       int numOfFirstDie = diceCounts.values().stream().findFirst().get();
       if (numOfFirstDie == 2 || numOfFirstDie == 3) {
-        scoreAllDice();
+        scoreAllDice(diceRolls);
       }
     }
   }
