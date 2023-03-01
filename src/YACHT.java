@@ -70,18 +70,6 @@ public class YACHT implements CobolRunnable {
     return 0;
   }
 
-  private static int scoreAllDice(List<Integer> diceRolls) {
-    return diceRolls.stream().mapToInt(i -> i).sum();
-  }
-
-  private static int scoreStraight(int absentRoll, List<Integer> diceRolls) {
-    if (numberOfDistinctDice(diceRolls) == 5 &&
-            !diceRolls.contains(absentRoll))
-      return 30;
-
-    return 0;
-  }
-
   private static int scoreFourOfAKind(List<Integer> diceRolls) {
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() <= 2)
@@ -93,6 +81,18 @@ public class YACHT implements CobolRunnable {
           return 4 * dieValue;
       }
     }
+    return 0;
+  }
+
+  private static int scoreAllDice(List<Integer> diceRolls) {
+    return diceRolls.stream().mapToInt(i -> i).sum();
+  }
+
+  private static int scoreStraight(int absentRoll, List<Integer> diceRolls) {
+    if (numberOfDistinctDice(diceRolls) == 5 &&
+            !diceRolls.contains(absentRoll))
+      return 30;
+
     return 0;
   }
 
