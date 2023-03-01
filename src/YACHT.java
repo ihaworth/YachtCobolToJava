@@ -128,7 +128,7 @@ public class YACHT implements CobolRunnable {
       case "fours"           -> scoreNumbers(4, diceRolls);
       case "fives"           -> scoreNumbers(5, diceRolls);
       case "sixes"           -> scoreNumbers(6, diceRolls);
-      case "full house"      -> scoreFullHouse(diceRolls);
+      case "full house"      -> setResult(scoreFullHouse(diceRolls));
       case "four of a kind"  -> scoreFourOfAKind(diceRolls);
       case "little straight" -> setResult(scoreStraight(6, diceRolls));
       case "big straight"    -> setResult(scoreStraight(1, diceRolls));
@@ -187,7 +187,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreFullHouse(List<Integer> diceRolls) {
+  private static int scoreFullHouse(List<Integer> diceRolls) {
     int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 2) {
@@ -196,7 +196,7 @@ public class YACHT implements CobolRunnable {
         score = scoreAllDice(diceRolls);
       }
     }
-    setResult(score);
+    return score;
   }
 
   private void scoreNumbers(int number, List<Integer> diceRolls) {
