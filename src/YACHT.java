@@ -118,6 +118,7 @@ public class YACHT implements CobolRunnable {
     /* YACHT.cobol:27: UNSTRING */
     CobolDataStorage b_WS_WORKING = new CobolDataStorage(15);    /* WS-WORKING */
     b_WS_WORKING.fillBytes('0', 15);
+    CobolFieldAttribute a_2 = new CobolFieldAttribute(16, 1, 0, 0, null);
     CobolString.unstringInit (fWsDice, 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(1), a_2), 0, 0);
@@ -150,11 +151,7 @@ public class YACHT implements CobolRunnable {
   }
 
   private void initAttr() {
-    /* Attributes */
-    a_2 = new CobolFieldAttribute (16, 1, 0, 0, null);
   }
-
-  private CobolFieldAttribute a_2;
 
 
   public int score(String dice, String category) {
