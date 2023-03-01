@@ -122,12 +122,12 @@ public class YACHT implements CobolRunnable {
     /* YACHT.cobol:29: EVALUATE */
     switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
       case "yacht"           -> scoreYacht(diceRolls);
-      case "ones"            -> scoreNumbers(1);
-      case "twos"            -> scoreNumbers(2);
-      case "threes"          -> scoreNumbers(3);
-      case "fours"           -> scoreNumbers(4);
-      case "fives"           -> scoreNumbers(5);
-      case "sixes"           -> scoreNumbers(6);
+      case "ones"            -> scoreNumbers(1, diceRolls);
+      case "twos"            -> scoreNumbers(2, diceRolls);
+      case "threes"          -> scoreNumbers(3, diceRolls);
+      case "fours"           -> scoreNumbers(4, diceRolls);
+      case "fives"           -> scoreNumbers(5, diceRolls);
+      case "sixes"           -> scoreNumbers(6, diceRolls);
       case "full house"      -> scoreFullHouse(diceRolls);
       case "four of a kind"  -> scoreFourOfAKind(diceRolls);
       case "little straight" -> scoreStraight(6, diceRolls);
@@ -193,7 +193,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreNumbers(int number) throws CobolStopRunException {
+  private void scoreNumbers(int number, List<Integer> diceRolls) throws CobolStopRunException {
     b_WS_NUMBER.setByte('0' + number);
     b_WS_COUNT.setByte('0');
     b_I.set(1);
