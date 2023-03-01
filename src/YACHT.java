@@ -138,11 +138,7 @@ public class YACHT implements CobolRunnable {
   }
 
   private static int scoreAllDice(List<Integer> diceRolls) {
-    int score = 0;
-    for (int i = 0; i < 5; i++) {
-      score += diceRolls.get(i);
-    }
-    return score;
+    return diceRolls.stream().mapToInt(i -> i).sum();
   }
 
   private void setResult(int score) {
