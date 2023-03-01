@@ -213,14 +213,12 @@ public class YACHT implements CobolRunnable {
   public int score(String dice, String category) {
     // Initialise data
     initialize();
-    execute();
 
     // Pass parameters
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
 
     // Invoke
-    initialize();
     execute();
 
     // Get result
