@@ -136,10 +136,12 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreAllDice(List<Integer> diceRolls) throws CobolStopRunException {
+  private void scoreAllDice(List<Integer> diceRolls) {
+    int score = 0;
     for (int i = 0; i < 5; i++) {
-      f_WS_RESULT.add(CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(i), a_2), 4);
+      score += diceRolls.get(i);
     }
+    b_WS_RESULT.setBytes ("" + score, 2);
   }
 
   private void scoreStraight(int absentRoll, List<Integer> diceRolls) {
@@ -183,7 +185,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreFullHouse(List<Integer> diceRolls) throws CobolStopRunException {
+  private void scoreFullHouse(List<Integer> diceRolls) {
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 2) {
       int numOfFirstDie = diceCounts.values().stream().findFirst().get();
