@@ -33,7 +33,6 @@ public class YACHT implements CobolRunnable {
   private void initialize() {
     if (!this.initialized) {
       b_RETURN_CODE.set(0);
-      b_WS_CATEGORY.fillBytes(' ', 15);
       b_WS_RESULT.fillBytes ('0', 2);
       this.initialized = true;
     }
@@ -152,14 +151,12 @@ public class YACHT implements CobolRunnable {
     try {
       /* Data storage */
       b_RETURN_CODE = new CobolDataStorage(4);	/* RETURN-CODE */
-      b_WS_CATEGORY = new CobolDataStorage(15);	/* WS-CATEGORY */
       b_WS_RESULT = new CobolDataStorage(2);	/* WS-RESULT */
       /* End of data storage */
 
       initAttr();
 
       /* Fields */
-      f_WS_CATEGORY	= CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);	/* WS-CATEGORY */
       f_WS_RESULT	= CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);	/* WS-RESULT */
       /* End of fields */
 
@@ -178,12 +175,10 @@ public class YACHT implements CobolRunnable {
 
   /* Data storage */
   private CobolDataStorage b_RETURN_CODE;	/* RETURN-CODE */
-  private CobolDataStorage b_WS_CATEGORY;	/* WS-CATEGORY */
   private CobolDataStorage b_WS_RESULT;	/* WS-RESULT */
   /* End of data storage */
 
 
-  private AbstractCobolField f_WS_CATEGORY;	/* WS-CATEGORY */
   private AbstractCobolField f_WS_RESULT;	/* WS-RESULT */
   /* End of fields */
 
@@ -200,6 +195,10 @@ public class YACHT implements CobolRunnable {
     AbstractCobolField f_WS_DICE = CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);    /* WS-DICE */
     b_WS_DICE.fillBytes('0', 5);
 
+    CobolDataStorage b_WS_CATEGORY = new CobolDataStorage(15);    /* WS-CATEGORY */
+    AbstractCobolField f_WS_CATEGORY = CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);    /* WS-CATEGORY */
+    b_WS_CATEGORY.fillBytes(' ', 15);
+
     initialize();
 
     // Convert java test parameters to COBOL
@@ -208,7 +207,7 @@ public class YACHT implements CobolRunnable {
 
     // Convert COBOL input parameters to java
     List<Integer> diceRolls = getDiceRolls(f_WS_DICE);
-    String categoryFromCobol = this.f_WS_CATEGORY.getString().trim();
+    String categoryFromCobol = f_WS_CATEGORY.getString().trim();
 
     // Invoke the scoring algorithm
     int score = score(diceRolls, categoryFromCobol);
