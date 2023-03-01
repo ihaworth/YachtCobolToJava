@@ -14,8 +14,6 @@ import static java.util.stream.Collectors.toMap;
 
 public class YACHT implements CobolRunnable {
 
-  private boolean initialized = false;
-
   @Override
   public int run(CobolDataStorage... argStorages) {
     return 0;
@@ -28,12 +26,6 @@ public class YACHT implements CobolRunnable {
   @Override
   public boolean isActive() {
     return false;
-  }
-
-  private void initialize() {
-    if (!this.initialized) {
-      this.initialized = true;
-    }
   }
 
   private static int score(List<Integer> diceRolls, String category) {
@@ -136,24 +128,6 @@ public class YACHT implements CobolRunnable {
     return rolledDice;
   }
 
-  public YACHT()
-  {
-    init();
-  }
-
-  public void init()
-  {
-    try {
-      initAttr();
-    } catch(Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  private void initAttr() {
-  }
-
-
   public int score(String dice, String category) {
     // Initialise data
     CobolFieldAttribute a_1 = new CobolFieldAttribute(16, 5, 0, 0, null);
@@ -168,8 +142,6 @@ public class YACHT implements CobolRunnable {
     CobolFieldAttribute a_4 = new CobolFieldAttribute(16, 2, 0, 0, null);
     CobolDataStorage b_WS_RESULT = new CobolDataStorage(2);    /* WS-RESULT */
     AbstractCobolField f_WS_RESULT = CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);    /* WS-RESULT */
-
-    initialize();
 
     // Convert java test parameters to COBOL
     b_WS_DICE.memcpy(dice, dice.length());
