@@ -167,7 +167,7 @@ public class YACHT implements CobolRunnable {
     return true;
   }
 
-  private void scoreFourOfAKind(List<Integer> diceRolls) throws CobolStopRunException {
+  private void scoreFourOfAKind(List<Integer> diceRolls) {
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() <= 2)
     {
@@ -176,10 +176,7 @@ public class YACHT implements CobolRunnable {
         int count = diceCounts.get(dieValue);
         if (count >= 4)
         {
-          d0.set (4);
-          d1.set (dieValue);
-          d0.mul (d1);
-          d0.getField (f_WS_RESULT, 4);
+          b_WS_RESULT.setBytes("%02d".formatted(4 * dieValue), 2);
         }
       }
     }
