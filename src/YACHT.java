@@ -35,7 +35,12 @@ public class YACHT implements CobolRunnable {
     initialize();
     /* PROCEDURE DIVISION */
     /* Entry dispatch */
-    setResult(score(getDiceRolls(), this.f_WS_CATEGORY.getString().trim()));
+    List<Integer> diceRolls = getDiceRolls();
+    String category = this.f_WS_CATEGORY.getString().trim();
+
+    int score = score(diceRolls, category);
+
+    setResult(score);
   }
 
   private void initialize() {
