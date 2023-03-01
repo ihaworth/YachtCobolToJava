@@ -109,12 +109,12 @@ public class YACHT implements CobolRunnable {
   public int score(String dice, String category) {
     // Initialise data
     CobolFieldAttribute a_1 = new CobolFieldAttribute(16, 5, 0, 0, null);
-    CobolDataStorage b_WS_DICE = new CobolDataStorage(5);    /* WS-DICE */
-    AbstractCobolField f_WS_DICE = CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);    /* WS-DICE */
+    CobolDataStorage b_WS_DICE = new CobolDataStorage(5);
+    AbstractCobolField f_WS_DICE = CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);
 
     CobolFieldAttribute a_3 = new CobolFieldAttribute(33, 0, 0, 0, null);
-    CobolDataStorage b_WS_CATEGORY = new CobolDataStorage(15);    /* WS-CATEGORY */
-    AbstractCobolField f_WS_CATEGORY = CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);    /* WS-CATEGORY */
+    CobolDataStorage b_WS_CATEGORY = new CobolDataStorage(15);
+    AbstractCobolField f_WS_CATEGORY = CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);
 
     // Convert java test parameters to COBOL
     b_WS_DICE.memcpy(dice, dice.length());
@@ -136,8 +136,8 @@ public class YACHT implements CobolRunnable {
 
     // Convert the java score to COBOL
     CobolFieldAttribute a_4 = new CobolFieldAttribute(16, 2, 0, 0, null);
-    CobolDataStorage b_WS_RESULT = new CobolDataStorage(2);    /* WS-RESULT */
-    AbstractCobolField f_WS_RESULT = CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);    /* WS-RESULT */
+    CobolDataStorage b_WS_RESULT = new CobolDataStorage(2);
+    AbstractCobolField f_WS_RESULT = CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);
     f_WS_RESULT.setInt(score);
 
     return f_WS_RESULT;
@@ -145,7 +145,7 @@ public class YACHT implements CobolRunnable {
 
   private List<Integer> getDiceRolls(AbstractCobolField fWsDice) {
     /* YACHT.cobol:27: UNSTRING */
-    CobolDataStorage b_WS_WORKING = new CobolDataStorage(15);    /* WS-WORKING */
+    CobolDataStorage b_WS_WORKING = new CobolDataStorage(15);
     b_WS_WORKING.fillBytes('0', 15);
     CobolFieldAttribute a_2 = new CobolFieldAttribute(16, 1, 0, 0, null);
     CobolString.unstringInit (fWsDice, 0, 0);
