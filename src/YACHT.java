@@ -73,15 +73,10 @@ public class YACHT implements CobolRunnable {
       d1.decimalInit();
 
       b_RETURN_CODE.set(0);
-      b_I.set(1);
-      b_J.set(1);
       b_WS_DICE.fillBytes('0', 5);
       b_WS_CATEGORY.fillBytes(' ', 15);
       b_WS_RESULT.fillBytes ('0', 2);
       b_WS_WORKING.fillBytes('0', 15);
-      b_WS_NUMBER.setByte('0');
-      b_WS_COUNT.setByte('0');
-      b_WS_ABSENT.setByte('0');
       this.initialized = true;
     }
     /* PROCEDURE DIVISION */
@@ -239,11 +234,6 @@ public class YACHT implements CobolRunnable {
       b_WS_CATEGORY = new CobolDataStorage(15);	/* WS-CATEGORY */
       b_WS_RESULT = new CobolDataStorage(2);	/* WS-RESULT */
       b_WS_WORKING = new CobolDataStorage(15);	/* WS-WORKING */
-      b_I = new CobolDataStorage(4);	/* I */
-      b_J = new CobolDataStorage(4);	/* J */
-      b_WS_NUMBER = new CobolDataStorage(1);	/* WS-NUMBER */
-      b_WS_COUNT = new CobolDataStorage(1);	/* WS-COUNT */
-      b_WS_ABSENT = new CobolDataStorage(1);	/* WS-ABSENT */
 
       /* End of data storage */
 
@@ -271,7 +261,6 @@ public class YACHT implements CobolRunnable {
     a_2 = new CobolFieldAttribute (16, 1, 0, 0, null);
     a_3 = new CobolFieldAttribute (33, 0, 0, 0, null);
     a_4 = new CobolFieldAttribute (16, 2, 0, 0, null);
-
   }
 
   /* Decimal structures */
@@ -287,11 +276,6 @@ public class YACHT implements CobolRunnable {
   private CobolDataStorage b_WS_CATEGORY;	/* WS-CATEGORY */
   private CobolDataStorage b_WS_RESULT;	/* WS-RESULT */
   private CobolDataStorage b_WS_WORKING;	/* WS-WORKING */
-  private CobolDataStorage b_I;	/* I */
-  private CobolDataStorage b_J;	/* J */
-  private CobolDataStorage b_WS_NUMBER;	/* WS-NUMBER */
-  private CobolDataStorage b_WS_COUNT;	/* WS-COUNT */
-  private CobolDataStorage b_WS_ABSENT;	/* WS-ABSENT */
 
   /* End of data storage */
 
