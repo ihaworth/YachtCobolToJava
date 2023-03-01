@@ -54,6 +54,11 @@ public class YACHT implements CobolRunnable {
     return 0;
   }
 
+  private static int scoreNumbers(int value, List<Integer> diceRolls) {
+    int numberOfRollsOfValue = (int)diceRolls.stream().filter(r -> r == value).count();
+    return numberOfRollsOfValue * value;
+  }
+
   private static int scoreAllDice(List<Integer> diceRolls) {
     return diceRolls.stream().mapToInt(i -> i).sum();
   }
@@ -89,11 +94,6 @@ public class YACHT implements CobolRunnable {
       }
     }
     return 0;
-  }
-
-  private static int scoreNumbers(int value, List<Integer> diceRolls) {
-    int numberOfRollsOfValue = (int)diceRolls.stream().filter(r -> r == value).count();
-    return numberOfRollsOfValue * value;
   }
 
   private static int numberOfDistinctDice(List<Integer> diceRolls) {
