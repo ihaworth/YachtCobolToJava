@@ -119,17 +119,17 @@ public class YACHT implements CobolRunnable {
 
     /* YACHT.cobol:29: EVALUATE */
     switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
-      case "yacht"           -> scoreYacht();
+      case "yacht"           -> scoreYacht(getDiceRolls());
       case "ones"            -> scoreNumbers(1);
       case "twos"            -> scoreNumbers(2);
       case "threes"          -> scoreNumbers(3);
       case "fours"           -> scoreNumbers(4);
       case "fives"           -> scoreNumbers(5);
       case "sixes"           -> scoreNumbers(6);
-      case "full house"      -> scoreFullHouse();
-      case "four of a kind"  -> scoreFourOfAKind();
-      case "little straight" -> scoreStraight(6);
-      case "big straight"    -> scoreStraight(1);
+      case "full house"      -> scoreFullHouse(getDiceRolls());
+      case "four of a kind"  -> scoreFourOfAKind(getDiceRolls());
+      case "little straight" -> scoreStraight(6, getDiceRolls());
+      case "big straight"    -> scoreStraight(1, getDiceRolls());
       case "choice"          -> scoreAllDice();
     }
   }
@@ -140,8 +140,8 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreStraight(int absentRoll) {
-    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
+  private void scoreStraight(int absentRoll, List<Integer> diceRolls) {
+    Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 5)
     {
       boolean valueIsAbsent = checkValueAbsent(absentRoll);
@@ -163,8 +163,8 @@ public class YACHT implements CobolRunnable {
     return true;
   }
 
-  private void scoreFourOfAKind() throws CobolStopRunException {
-    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
+  private void scoreFourOfAKind(List<Integer> diceRolls) throws CobolStopRunException {
+    Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() <= 2)
     {
       for (int dieValue: diceCounts.keySet())
@@ -181,8 +181,8 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreFullHouse() throws CobolStopRunException {
-    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
+  private void scoreFullHouse(List<Integer> diceRolls) throws CobolStopRunException {
+    Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 2) {
       int numOfFirstDie = diceCounts.values().stream().findFirst().get();
       if (numOfFirstDie == 2 || numOfFirstDie == 3) {
@@ -209,8 +209,8 @@ public class YACHT implements CobolRunnable {
     d0.getField (f_WS_RESULT, 4);
   }
 
-  private void scoreYacht() {
-    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
+  private void scoreYacht(List<Integer> diceRolls) {
+    Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 1)
     {
       b_WS_RESULT.setBytes ("50", 2);
