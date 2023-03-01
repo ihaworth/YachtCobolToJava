@@ -30,15 +30,6 @@ public class YACHT implements CobolRunnable {
     return false;
   }
 
-  private void execute() {
-    List<Integer> diceRolls = getDiceRolls();
-    String category = this.f_WS_CATEGORY.getString().trim();
-
-    int score = score(diceRolls, category);
-
-    setResult(score);
-  }
-
   private void initialize() {
     if (!this.initialized) {
       b_RETURN_CODE.set(0);
@@ -219,7 +210,12 @@ public class YACHT implements CobolRunnable {
     b_WS_CATEGORY.memcpy(category, category.length());
 
     // Invoke
-    execute();
+    List<Integer> diceRolls = getDiceRolls();
+    String categoryFromCobol = this.f_WS_CATEGORY.getString().trim();
+
+    int score = score(diceRolls, categoryFromCobol);
+
+    setResult(score);
 
     // Get result
     return f_WS_RESULT.getInt();
