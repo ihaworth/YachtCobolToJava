@@ -61,10 +61,6 @@ public class YACHT implements CobolRunnable {
     return diceRolls.stream().mapToInt(i -> i).sum();
   }
 
-  private void setResult(int score) {
-    b_WS_RESULT.setBytes("%02d".formatted(score), 2);
-  }
-
   private static int scoreStraight(int absentRoll, List<Integer> diceRolls) {
     if (numberOfDistinctDice(diceRolls) == 5 &&
             !diceRolls.contains(absentRoll))
@@ -213,7 +209,7 @@ public class YACHT implements CobolRunnable {
     int score = score(diceRolls, categoryFromCobol);
 
     // Convert the java score to COBOL
-    setResult(score);
+    b_WS_RESULT.setBytes("%02d".formatted(score), 2);
 
     // Turn the COBOL result back into java for the tests to check
     return f_WS_RESULT.getInt();
