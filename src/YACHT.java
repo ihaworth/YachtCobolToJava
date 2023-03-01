@@ -30,14 +30,6 @@ public class YACHT implements CobolRunnable {
     return false;
   }
 
-  void run_module () {
-    /* Initialize program */
-    initialize();
-    /* PROCEDURE DIVISION */
-    /* Entry dispatch */
-    execute();
-  }
-
   private void execute() {
     List<Integer> diceRolls = getDiceRolls();
     String category = this.f_WS_CATEGORY.getString().trim();
@@ -220,14 +212,16 @@ public class YACHT implements CobolRunnable {
 
   public int score(String dice, String category) {
     // Initialise data
-    run_module();
+    initialize();
+    execute();
 
     // Pass parameters
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
 
     // Invoke
-    run_module();
+    initialize();
+    execute();
 
     // Get result
     return f_WS_RESULT.getInt();
