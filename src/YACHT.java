@@ -142,6 +142,13 @@ public class YACHT implements CobolRunnable {
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
 
+    AbstractCobolField f_WS_RESULT = scoreCOBOL(f_WS_DICE, f_WS_CATEGORY);
+
+    // Turn the COBOL result back into java for the tests to check
+    return f_WS_RESULT.getInt();
+  }
+
+  private AbstractCobolField scoreCOBOL(AbstractCobolField f_WS_DICE, AbstractCobolField f_WS_CATEGORY) {
     // Convert COBOL input parameters to java
     List<Integer> diceRolls = getDiceRolls(f_WS_DICE);
     String categoryFromCobol = f_WS_CATEGORY.getString().trim();
@@ -155,8 +162,6 @@ public class YACHT implements CobolRunnable {
 
     // Convert the java score to COBOL
     f_WS_RESULT.setInt(score);
-
-    // Turn the COBOL result back into java for the tests to check
-    return f_WS_RESULT.getInt();
+    return f_WS_RESULT;
   }
 }
