@@ -141,7 +141,7 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreStraight(int absentRoll) {
-    Map<Integer, Integer> diceCounts = countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
     if (diceCounts.size() == 5)
     {
       boolean valueIsAbsent = checkValueAbsent(absentRoll);
@@ -164,7 +164,7 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreFourOfAKind() throws CobolStopRunException {
-    Map<Integer, Integer> diceCounts = countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
     if (diceCounts.size() <= 2)
     {
       for (int dieValue: diceCounts.keySet())
@@ -182,7 +182,7 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreFullHouse() throws CobolStopRunException {
-    Map<Integer, Integer> diceCounts = countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
     if (diceCounts.size() == 2) {
       int numOfFirstDie = diceCounts.values().stream().findFirst().get();
       if (numOfFirstDie == 2 || numOfFirstDie == 3) {
@@ -210,16 +210,14 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreYacht() {
-    Map<Integer, Integer> diceCounts = countDistinctDice();
+    Map<Integer, Integer> diceCounts = countDistinctDice(getDiceRolls());
     if (diceCounts.size() == 1)
     {
       b_WS_RESULT.setBytes ("50", 2);
     }
   }
 
-  private Map<Integer, Integer> countDistinctDice() {
-    List<Integer> rolledDice = getDiceRolls();
-
+  private Map<Integer, Integer> countDistinctDice(List<Integer> rolledDice) {
     return rolledDice.stream().collect(groupingBy(r -> r))
             .entrySet().stream().collect(toMap(e -> e.getKey(),
                                                e -> e.getValue().size()));
