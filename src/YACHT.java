@@ -138,11 +138,6 @@ public class YACHT implements CobolRunnable {
     CobolDataStorage b_WS_CATEGORY = new CobolDataStorage(15);    /* WS-CATEGORY */
     AbstractCobolField f_WS_CATEGORY = CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);    /* WS-CATEGORY */
 
-    /* Attributes */
-    CobolFieldAttribute a_4 = new CobolFieldAttribute(16, 2, 0, 0, null);
-    CobolDataStorage b_WS_RESULT = new CobolDataStorage(2);    /* WS-RESULT */
-    AbstractCobolField f_WS_RESULT = CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);    /* WS-RESULT */
-
     // Convert java test parameters to COBOL
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
@@ -153,6 +148,10 @@ public class YACHT implements CobolRunnable {
 
     // Invoke the scoring algorithm
     int score = score(diceRolls, categoryFromCobol);
+
+    CobolFieldAttribute a_4 = new CobolFieldAttribute(16, 2, 0, 0, null);
+    CobolDataStorage b_WS_RESULT = new CobolDataStorage(2);    /* WS-RESULT */
+    AbstractCobolField f_WS_RESULT = CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);    /* WS-RESULT */
 
     // Convert the java score to COBOL
     f_WS_RESULT.setInt(score);
