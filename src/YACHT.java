@@ -173,6 +173,7 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreFourOfAKind(List<Integer> diceRolls) {
+    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() <= 2)
     {
@@ -181,10 +182,11 @@ public class YACHT implements CobolRunnable {
         int count = diceCounts.get(dieValue);
         if (count >= 4)
         {
-          setResult(4 * dieValue);
+          score = 4 * dieValue;
         }
       }
     }
+    setResult(score);
   }
 
   private static int scoreFullHouse(List<Integer> diceRolls) {
