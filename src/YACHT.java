@@ -35,7 +35,6 @@ public class YACHT implements CobolRunnable {
       b_RETURN_CODE.set(0);
       b_WS_CATEGORY.fillBytes(' ', 15);
       b_WS_RESULT.fillBytes ('0', 2);
-      b_WS_WORKING.fillBytes('0', 15);
       this.initialized = true;
     }
   }
@@ -124,6 +123,8 @@ public class YACHT implements CobolRunnable {
 
   private List<Integer> getDiceRolls(AbstractCobolField fWsDice) {
     /* YACHT.cobol:27: UNSTRING */
+    CobolDataStorage b_WS_WORKING = new CobolDataStorage(15);    /* WS-WORKING */
+    b_WS_WORKING.fillBytes('0', 15);
     CobolString.unstringInit (fWsDice, 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(1), a_2), 0, 0);
@@ -153,7 +154,6 @@ public class YACHT implements CobolRunnable {
       b_RETURN_CODE = new CobolDataStorage(4);	/* RETURN-CODE */
       b_WS_CATEGORY = new CobolDataStorage(15);	/* WS-CATEGORY */
       b_WS_RESULT = new CobolDataStorage(2);	/* WS-RESULT */
-      b_WS_WORKING = new CobolDataStorage(15);	/* WS-WORKING */
       /* End of data storage */
 
       initAttr();
@@ -180,7 +180,6 @@ public class YACHT implements CobolRunnable {
   private CobolDataStorage b_RETURN_CODE;	/* RETURN-CODE */
   private CobolDataStorage b_WS_CATEGORY;	/* WS-CATEGORY */
   private CobolDataStorage b_WS_RESULT;	/* WS-RESULT */
-  private CobolDataStorage b_WS_WORKING;	/* WS-WORKING */
   /* End of data storage */
 
 
