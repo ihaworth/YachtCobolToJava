@@ -32,7 +32,6 @@ public class YACHT implements CobolRunnable {
 
   private void initialize() {
     if (!this.initialized) {
-      b_RETURN_CODE.set(0);
       this.initialized = true;
     }
   }
@@ -144,10 +143,6 @@ public class YACHT implements CobolRunnable {
   public void init()
   {
     try {
-      /* Data storage */
-      b_RETURN_CODE = new CobolDataStorage(4);	/* RETURN-CODE */
-      /* End of data storage */
-
       initAttr();
     } catch(Exception e) {
       e.printStackTrace();
@@ -158,10 +153,6 @@ public class YACHT implements CobolRunnable {
     /* Attributes */
     a_2 = new CobolFieldAttribute (16, 1, 0, 0, null);
   }
-
-  /* Data storage */
-  private CobolDataStorage b_RETURN_CODE;	/* RETURN-CODE */
-  /* End of data storage */
 
   private CobolFieldAttribute a_2;
 
