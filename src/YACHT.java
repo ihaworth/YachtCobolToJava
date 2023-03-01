@@ -205,19 +205,21 @@ public class YACHT implements CobolRunnable {
     // Initialise data
     initialize();
 
-    // Pass parameters
+    // Convert java test parameters to COBOL
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
 
-    // Invoke
+    // Convert COBOL input parameters to java
     List<Integer> diceRolls = getDiceRolls();
     String categoryFromCobol = this.f_WS_CATEGORY.getString().trim();
 
+    // Invoke the scoring algorithm
     int score = score(diceRolls, categoryFromCobol);
 
+    // Convert the java score to COBOL
     setResult(score);
 
-    // Get result
+    // Turn the COBOL result back into java for the tests to check
     return f_WS_RESULT.getInt();
   }
 }
