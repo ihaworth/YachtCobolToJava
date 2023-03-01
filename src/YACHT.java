@@ -201,7 +201,7 @@ public class YACHT implements CobolRunnable {
     int score = score(diceRolls, categoryFromCobol);
 
     // Convert the java score to COBOL
-    b_WS_RESULT.setBytes("%02d".formatted(score), 2);
+    f_WS_RESULT.setInt(score);
 
     // Turn the COBOL result back into java for the tests to check
     return f_WS_RESULT.getInt();
