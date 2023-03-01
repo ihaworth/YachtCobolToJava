@@ -196,9 +196,9 @@ public class YACHT implements CobolRunnable {
   private void scoreNumbers(int number, List<Integer> diceRolls) throws CobolStopRunException {
     b_WS_NUMBER.setByte('0' + number);
     b_WS_COUNT.setByte('0');
-    for (int i = 1; i <=5; i++)
+    for (int i = 0; i < 5; i++)
     {
-      if (((long)b_WS_WORKING.getSubDataStorage(i - 1).memcmp (b_WS_NUMBER, 1) == 0L)) {
+      if (((long)b_WS_WORKING.getSubDataStorage(i).memcmp (b_WS_NUMBER, 1) == 0L)) {
         f_WS_COUNT.add(c_12, 4);
       }
     }
