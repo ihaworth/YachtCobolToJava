@@ -1,11 +1,12 @@
 import jp.osscons.opensourcecobol.libcobj.call.CobolRunnable;
 import jp.osscons.opensourcecobol.libcobj.common.CobolModule;
 import jp.osscons.opensourcecobol.libcobj.common.CobolString;
-import jp.osscons.opensourcecobol.libcobj.common.CobolUtil;
-import jp.osscons.opensourcecobol.libcobj.data.*;
+import jp.osscons.opensourcecobol.libcobj.data.AbstractCobolField;
+import jp.osscons.opensourcecobol.libcobj.data.CobolDataStorage;
+import jp.osscons.opensourcecobol.libcobj.data.CobolFieldAttribute;
+import jp.osscons.opensourcecobol.libcobj.data.CobolFieldFactory;
 import jp.osscons.opensourcecobol.libcobj.exceptions.CobolGoBackException;
 import jp.osscons.opensourcecobol.libcobj.exceptions.CobolStopRunException;
-import jp.osscons.opensourcecobol.libcobj.ui.CobolResultSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,31 +18,19 @@ import static java.util.stream.Collectors.toMap;
 public class YACHT implements CobolRunnable {
 
   private boolean initialized = false;
-  private static final boolean cobolInitialized = false;
-
 
   @Override
   public int run(CobolDataStorage... argStorages) {
-    return YACHT_();
+    return 0;
   }
 
   @Override
   public void cancel() {
-    YACHT_();
   }
 
   @Override
   public boolean isActive() {
     return false;
-  }
-
-  public CobolResultSet execute () {
-    int returnCode = run_module();
-    return new CobolResultSet(returnCode);
-  }
-
-  public int YACHT_ () {
-    return this.run_module();
   }
 
   int run_module () {
@@ -180,14 +169,6 @@ public class YACHT implements CobolRunnable {
       rolledDice.add(dieRoll);
     }
     return rolledDice;
-  }
-
-  public static void main(String[] args)
-  {
-    CobolUtil.cob_init(args, cobolInitialized);
-    CobolDecimal.cobInitNumeric();
-    new YACHT().YACHT_();
-    CobolStopRunException.stopRun();
   }
 
   public YACHT()
