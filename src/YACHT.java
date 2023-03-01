@@ -150,17 +150,16 @@ public class YACHT implements CobolRunnable {
   }
 
   private static int scoreStraight(int absentRoll, List<Integer> diceRolls) {
-    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 5)
     {
       boolean valueIsAbsent = checkValueAbsent(absentRoll, diceRolls);
       if (valueIsAbsent)
       {
-        score = 30;
+        return 30;
       }
     }
-    return score;
+    return 0;
   }
 
   private static boolean checkValueAbsent(int absentRoll, List<Integer> diceRolls) {
@@ -174,7 +173,6 @@ public class YACHT implements CobolRunnable {
   }
 
   private static int scoreFourOfAKind(List<Integer> diceRolls) {
-    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() <= 2)
     {
@@ -183,23 +181,22 @@ public class YACHT implements CobolRunnable {
         int count = diceCounts.get(dieValue);
         if (count >= 4)
         {
-          score = 4 * dieValue;
+          return 4 * dieValue;
         }
       }
     }
-    return score;
+    return 0;
   }
 
   private static int scoreFullHouse(List<Integer> diceRolls) {
-    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 2) {
       int numOfFirstDie = diceCounts.values().stream().findFirst().get();
       if (numOfFirstDie == 2 || numOfFirstDie == 3) {
-        score = scoreAllDice(diceRolls);
+        return scoreAllDice(diceRolls);
       }
     }
-    return score;
+    return 0;
   }
 
   private static int scoreNumbers(int number, List<Integer> diceRolls) {
@@ -214,13 +211,12 @@ public class YACHT implements CobolRunnable {
   }
 
   private static int scoreYacht(List<Integer> diceRolls) {
-    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 1)
     {
-      score = 50;
+      return 50;
     }
-    return score;
+    return 0;
   }
 
   private static Map<Integer, Integer> countDistinctDice(List<Integer> rolledDice) {
