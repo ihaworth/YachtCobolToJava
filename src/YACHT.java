@@ -1,5 +1,4 @@
 import jp.osscons.opensourcecobol.libcobj.call.CobolRunnable;
-import jp.osscons.opensourcecobol.libcobj.common.CobolModule;
 import jp.osscons.opensourcecobol.libcobj.common.CobolString;
 import jp.osscons.opensourcecobol.libcobj.data.AbstractCobolField;
 import jp.osscons.opensourcecobol.libcobj.data.CobolDataStorage;
@@ -34,13 +33,6 @@ public class YACHT implements CobolRunnable {
   }
 
   int run_module () {
-    CobolModule module = new CobolModule(null, null, null, null, 0, '.', '$', ',', 1, 1, 1, 0, null);
-
-    /* Start of function code */
-
-    /* Push module stack */
-    CobolModule.push (module);
-
     /* Initialize program */
     if (!this.initialized) {
       b_RETURN_CODE.set(0);
@@ -63,8 +55,6 @@ public class YACHT implements CobolRunnable {
       CobolStopRunException.stopRun();
       System.exit(e.getReturnCode());
     }
-    /* Pop module stack */
-    CobolModule.pop();
 
     /* Program return */
     return b_RETURN_CODE.intValue();
