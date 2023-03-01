@@ -76,7 +76,7 @@ public class YACHT implements CobolRunnable {
       CobolStopRunException.dummy();
       CobolGoBackException.dummy();
       /* Entry dispatch */
-      score(getDiceRolls(), YACHT.this.f_WS_CATEGORY.getString().trim());
+      setResult(score(getDiceRolls(), this.f_WS_CATEGORY.getString().trim()));
 
     } catch(CobolGoBackException e) {
       return e.getReturnCode();
@@ -91,9 +91,9 @@ public class YACHT implements CobolRunnable {
     return b_RETURN_CODE.intValue();
   }
 
-  private void score(List<Integer> diceRolls, String category) throws CobolStopRunException {
+  private static int score(List<Integer> diceRolls, String category) {
     /* YACHT.cobol:29: EVALUATE */
-    setResult(switch (category) {
+    return switch (category) {
       case "yacht"           -> scoreYacht(diceRolls);
       case "ones"            -> scoreNumbers(1, diceRolls);
       case "twos"            -> scoreNumbers(2, diceRolls);
@@ -107,7 +107,7 @@ public class YACHT implements CobolRunnable {
       case "big straight"    -> scoreStraight(1, diceRolls);
       case "choice"          -> scoreAllDice(diceRolls);
       default                -> 0;
-    });
+    };
   }
 
   private static int scoreAllDice(List<Integer> diceRolls) {
