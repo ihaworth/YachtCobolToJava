@@ -120,20 +120,21 @@ public class YACHT implements CobolRunnable {
     final List<Integer> diceRolls = getDiceRolls();
 
     /* YACHT.cobol:29: EVALUATE */
-    switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
-      case "yacht"           -> setResult(scoreYacht(diceRolls));
-      case "ones"            -> setResult(scoreNumbers(1, diceRolls));
-      case "twos"            -> setResult(scoreNumbers(2, diceRolls));
-      case "threes"          -> setResult(scoreNumbers(3, diceRolls));
-      case "fours"           -> setResult(scoreNumbers(4, diceRolls));
-      case "fives"           -> setResult(scoreNumbers(5, diceRolls));
-      case "sixes"           -> setResult(scoreNumbers(6, diceRolls));
-      case "full house"      -> setResult(scoreFullHouse(diceRolls));
-      case "four of a kind"  -> setResult(scoreFourOfAKind(diceRolls));
-      case "little straight" -> setResult(scoreStraight(6, diceRolls));
-      case "big straight"    -> setResult(scoreStraight(1, diceRolls));
-      case "choice"          -> setResult(scoreAllDice(diceRolls));
-    }
+    setResult(switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
+      case "yacht"           -> scoreYacht(diceRolls);
+      case "ones"            -> scoreNumbers(1, diceRolls);
+      case "twos"            -> scoreNumbers(2, diceRolls);
+      case "threes"          -> scoreNumbers(3, diceRolls);
+      case "fours"           -> scoreNumbers(4, diceRolls);
+      case "fives"           -> scoreNumbers(5, diceRolls);
+      case "sixes"           -> scoreNumbers(6, diceRolls);
+      case "full house"      -> scoreFullHouse(diceRolls);
+      case "four of a kind"  -> scoreFourOfAKind(diceRolls);
+      case "little straight" -> scoreStraight(6, diceRolls);
+      case "big straight"    -> scoreStraight(1, diceRolls);
+      case "choice"          -> scoreAllDice(diceRolls);
+      default                -> 0;
+    });
   }
 
   private static int scoreAllDice(List<Integer> diceRolls) {
