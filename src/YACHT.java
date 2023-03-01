@@ -149,15 +149,17 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreStraight(int absentRoll, List<Integer> diceRolls) {
+    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 5)
     {
       boolean valueIsAbsent = checkValueAbsent(absentRoll, diceRolls);
       if (valueIsAbsent)
       {
-        setResult(30);
+        score = 30;
       }
     }
+    setResult(score);
   }
 
   private boolean checkValueAbsent(int absentRoll, List<Integer> diceRolls) {
