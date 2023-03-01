@@ -4,8 +4,6 @@ import jp.osscons.opensourcecobol.libcobj.data.AbstractCobolField;
 import jp.osscons.opensourcecobol.libcobj.data.CobolDataStorage;
 import jp.osscons.opensourcecobol.libcobj.data.CobolFieldAttribute;
 import jp.osscons.opensourcecobol.libcobj.data.CobolFieldFactory;
-import jp.osscons.opensourcecobol.libcobj.exceptions.CobolGoBackException;
-import jp.osscons.opensourcecobol.libcobj.exceptions.CobolStopRunException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,18 +41,8 @@ public class YACHT implements CobolRunnable {
       this.initialized = true;
     }
     /* PROCEDURE DIVISION */
-    try{
-      CobolStopRunException.dummy();
-      CobolGoBackException.dummy();
-      /* Entry dispatch */
-      setResult(score(getDiceRolls(), this.f_WS_CATEGORY.getString().trim()));
-
-    } catch(CobolGoBackException e) {
-      return e.getReturnCode();
-    } catch(CobolStopRunException e) {
-      CobolStopRunException.stopRun();
-      System.exit(e.getReturnCode());
-    }
+    /* Entry dispatch */
+    setResult(score(getDiceRolls(), this.f_WS_CATEGORY.getString().trim()));
 
     /* Program return */
     return b_RETURN_CODE.intValue();
