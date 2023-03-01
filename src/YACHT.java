@@ -141,6 +141,10 @@ public class YACHT implements CobolRunnable {
     for (int i = 0; i < 5; i++) {
       score += diceRolls.get(i);
     }
+    setResult(score);
+  }
+
+  private void setResult(int score) {
     b_WS_RESULT.setBytes("%02d".formatted(score), 2);
   }
 
@@ -151,7 +155,7 @@ public class YACHT implements CobolRunnable {
       boolean valueIsAbsent = checkValueAbsent(absentRoll, diceRolls);
       if (valueIsAbsent)
       {
-        b_WS_RESULT.setBytes("%02d".formatted(30), 2);
+        setResult(30);
       }
     }
   }
@@ -175,7 +179,7 @@ public class YACHT implements CobolRunnable {
         int count = diceCounts.get(dieValue);
         if (count >= 4)
         {
-          b_WS_RESULT.setBytes("%02d".formatted(4 * dieValue), 2);
+          setResult(4 * dieValue);
         }
       }
     }
@@ -199,14 +203,14 @@ public class YACHT implements CobolRunnable {
         count++;
       }
     }
-    b_WS_RESULT.setBytes("%02d".formatted(count * number), 2);
+    setResult(count * number);
   }
 
   private void scoreYacht(List<Integer> diceRolls) {
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 1)
     {
-      b_WS_RESULT.setBytes("%02d".formatted(50), 2);
+      setResult(50);
     }
   }
 
