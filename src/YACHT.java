@@ -195,7 +195,7 @@ public class YACHT implements CobolRunnable {
     }
   }
 
-  private void scoreNumbers(int number, List<Integer> diceRolls) throws CobolStopRunException {
+  private void scoreNumbers(int number, List<Integer> diceRolls) {
     int count = 0;
     for (int i = 0; i < 5; i++)
     {
@@ -276,14 +276,8 @@ public class YACHT implements CobolRunnable {
       f_WS_DICE	= CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);	/* WS-DICE */
       f_WS_CATEGORY	= CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);	/* WS-CATEGORY */
       f_WS_RESULT	= CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);	/* WS-RESULT */
-      f_WS_COUNT	= CobolFieldFactory.makeCobolField(1, b_WS_COUNT, a_2);	/* WS-COUNT */
 
       /* End of fields */
-
-
-      /* Constants */
-
-      c_12	= CobolFieldFactory.makeCobolField(1, "1", a_2);
 
     } catch(Exception e) {
       e.printStackTrace();
@@ -328,14 +322,11 @@ public class YACHT implements CobolRunnable {
   private AbstractCobolField f_WS_DICE;	/* WS-DICE */
   private AbstractCobolField f_WS_CATEGORY;	/* WS-CATEGORY */
   private AbstractCobolField f_WS_RESULT;	/* WS-RESULT */
-  private AbstractCobolField f_WS_COUNT;	/* WS-COUNT */
 
   /* End of fields */
 
 
   /* Constants */
-
-  private AbstractCobolField c_12;
 
   /* Attributes */
 
