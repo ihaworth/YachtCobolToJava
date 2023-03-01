@@ -211,11 +211,13 @@ public class YACHT implements CobolRunnable {
   }
 
   private void scoreYacht(List<Integer> diceRolls) {
+    int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 1)
     {
-      setResult(50);
+      score = 50;
     }
+    setResult(score);
   }
 
   private static Map<Integer, Integer> countDistinctDice(List<Integer> rolledDice) {
