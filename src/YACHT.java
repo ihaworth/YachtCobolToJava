@@ -32,6 +32,13 @@ public class YACHT implements CobolRunnable {
 
   void run_module () {
     /* Initialize program */
+    initialize();
+    /* PROCEDURE DIVISION */
+    /* Entry dispatch */
+    setResult(score(getDiceRolls(), this.f_WS_CATEGORY.getString().trim()));
+  }
+
+  private void initialize() {
     if (!this.initialized) {
       b_RETURN_CODE.set(0);
       b_WS_DICE.fillBytes('0', 5);
@@ -40,9 +47,6 @@ public class YACHT implements CobolRunnable {
       b_WS_WORKING.fillBytes('0', 15);
       this.initialized = true;
     }
-    /* PROCEDURE DIVISION */
-    /* Entry dispatch */
-    setResult(score(getDiceRolls(), this.f_WS_CATEGORY.getString().trim()));
   }
 
   private static int score(List<Integer> diceRolls, String category) {
