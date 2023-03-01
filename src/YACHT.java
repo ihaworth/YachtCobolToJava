@@ -171,18 +171,15 @@ public class YACHT implements CobolRunnable {
     CobolFieldAttribute a_1 = new CobolFieldAttribute(16, 5, 0, 0, null);
     CobolDataStorage b_WS_DICE = new CobolDataStorage(5);    /* WS-DICE */
     AbstractCobolField f_WS_DICE = CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);    /* WS-DICE */
-    b_WS_DICE.fillBytes('0', 5);
 
     CobolFieldAttribute a_3 = new CobolFieldAttribute(33, 0, 0, 0, null);
     CobolDataStorage b_WS_CATEGORY = new CobolDataStorage(15);    /* WS-CATEGORY */
     AbstractCobolField f_WS_CATEGORY = CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);    /* WS-CATEGORY */
-    b_WS_CATEGORY.fillBytes(' ', 15);
 
     /* Attributes */
     CobolFieldAttribute a_4 = new CobolFieldAttribute(16, 2, 0, 0, null);
     CobolDataStorage b_WS_RESULT = new CobolDataStorage(2);    /* WS-RESULT */
     AbstractCobolField f_WS_RESULT = CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);    /* WS-RESULT */
-    b_WS_RESULT.fillBytes ('0', 2);
 
     initialize();
 
