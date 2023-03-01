@@ -146,7 +146,7 @@ public class YACHT implements CobolRunnable {
   }
 
   private static int scoreStraight(int absentRoll, List<Integer> diceRolls) {
-    if (countDistinctDice(diceRolls).size() == 5 &&
+    if (numberOfDistinctDice(diceRolls) == 5 &&
             !diceRolls.contains(absentRoll))
       return 30;
 
@@ -186,12 +186,14 @@ public class YACHT implements CobolRunnable {
   }
 
   private static int scoreYacht(List<Integer> diceRolls) {
-    Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
-    if (diceCounts.size() == 1)
-    {
+    if (numberOfDistinctDice(diceRolls) == 1)
       return 50;
-    }
+
     return 0;
+  }
+
+  private static int numberOfDistinctDice(List<Integer> diceRolls) {
+    return countDistinctDice(diceRolls).size();
   }
 
   private static Map<Integer, Integer> countDistinctDice(List<Integer> rolledDice) {
