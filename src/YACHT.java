@@ -92,9 +92,6 @@ public class YACHT implements CobolRunnable {
   }
 
   private void score() throws CobolStopRunException {
-    /* YACHT.cobol:26: MOVE */
-    b_WS_RESULT.fillBytes ('0', 2);
-
     /* YACHT.cobol:27: UNSTRING */
     CobolString.unstringInit (f_WS_DICE, 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
