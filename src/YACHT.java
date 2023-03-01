@@ -198,7 +198,7 @@ public class YACHT implements CobolRunnable {
     b_WS_COUNT.setByte('0');
     for (int i = 0; i < 5; i++)
     {
-      if (((long)b_WS_WORKING.getSubDataStorage(i).memcmp (b_WS_NUMBER, 1) == 0L)) {
+      if (diceRolls.get(i) == number) {
         f_WS_COUNT.add(c_12, 4);
       }
     }
