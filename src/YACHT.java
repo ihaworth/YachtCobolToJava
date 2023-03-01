@@ -22,12 +22,12 @@ public class YACHT implements CobolRunnable {
 
   @Override
   public int run(CobolDataStorage... argStorages) {
-    return YACHT_(0);
+    return YACHT_();
   }
 
   @Override
   public void cancel() {
-    YACHT_(-1);
+    YACHT_();
   }
 
   @Override
@@ -36,28 +36,18 @@ public class YACHT implements CobolRunnable {
   }
 
   public CobolResultSet execute () {
-    int returnCode = run_module(0);
+    int returnCode = run_module();
     return new CobolResultSet(returnCode);
   }
 
-  public int YACHT_ (int entry) {
-    return this.run_module(entry);
+  public int YACHT_ () {
+    return this.run_module();
   }
 
-  int run_module (int entry) {
+  int run_module () {
     CobolModule module = new CobolModule(null, null, null, null, 0, '.', '$', ',', 1, 1, 1, 0, null);
 
     /* Start of function code */
-
-    /* CANCEL callback handling */
-    if (entry < 0) {
-    	if (!this.initialized) {
-    		CobolDecimal.cobInitNumeric();
-    		return 0;
-    	}
-    	this.initialized = false;
-    	return 0;
-    }
 
     /* Push module stack */
     CobolModule.push (module);
@@ -196,7 +186,7 @@ public class YACHT implements CobolRunnable {
   {
     CobolUtil.cob_init(args, cobolInitialized);
     CobolDecimal.cobInitNumeric();
-    new YACHT().YACHT_(0);
+    new YACHT().YACHT_();
     CobolStopRunException.stopRun();
   }
 
@@ -261,14 +251,14 @@ public class YACHT implements CobolRunnable {
 
   public int score(String dice, String category) {
     // Initialise data
-    run_module(1);
+    run_module();
 
     // Pass parameters
     b_WS_DICE.memcpy(dice, dice.length());
     b_WS_CATEGORY.memcpy(category, category.length());
 
     // Invoke
-    run_module(1);
+    run_module();
 
     // Get result
     return f_WS_RESULT.getInt();
