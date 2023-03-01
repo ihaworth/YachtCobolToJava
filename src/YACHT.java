@@ -59,6 +59,17 @@ public class YACHT implements CobolRunnable {
     return numberOfRollsOfValue * value;
   }
 
+  private static int scoreFullHouse(List<Integer> diceRolls) {
+    Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
+    if (diceCounts.size() == 2) {
+      int numOfFirstDie = diceCounts.values().stream().findFirst().get();
+      if (numOfFirstDie == 2 || numOfFirstDie == 3) {
+        return scoreAllDice(diceRolls);
+      }
+    }
+    return 0;
+  }
+
   private static int scoreAllDice(List<Integer> diceRolls) {
     return diceRolls.stream().mapToInt(i -> i).sum();
   }
@@ -80,17 +91,6 @@ public class YACHT implements CobolRunnable {
         int count = diceCounts.get(dieValue);
         if (count >= 4)
           return 4 * dieValue;
-      }
-    }
-    return 0;
-  }
-
-  private static int scoreFullHouse(List<Integer> diceRolls) {
-    Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
-    if (diceCounts.size() == 2) {
-      int numOfFirstDie = diceCounts.values().stream().findFirst().get();
-      if (numOfFirstDie == 2 || numOfFirstDie == 3) {
-        return scoreAllDice(diceRolls);
       }
     }
     return 0;
