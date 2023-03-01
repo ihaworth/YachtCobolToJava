@@ -121,7 +121,7 @@ public class YACHT implements CobolRunnable {
 
     /* YACHT.cobol:29: EVALUATE */
     switch (YACHT.this.f_WS_CATEGORY.getString().trim()) {
-      case "yacht"           -> scoreYacht(diceRolls);
+      case "yacht"           -> setResult(scoreYacht(diceRolls));
       case "ones"            -> setResult(scoreNumbers(1, diceRolls));
       case "twos"            -> setResult(scoreNumbers(2, diceRolls));
       case "threes"          -> setResult(scoreNumbers(3, diceRolls));
@@ -210,14 +210,14 @@ public class YACHT implements CobolRunnable {
     return count * number;
   }
 
-  private void scoreYacht(List<Integer> diceRolls) {
+  private static int scoreYacht(List<Integer> diceRolls) {
     int score = 0;
     Map<Integer, Integer> diceCounts = countDistinctDice(diceRolls);
     if (diceCounts.size() == 1)
     {
       score = 50;
     }
-    setResult(score);
+    return score;
   }
 
   private static Map<Integer, Integer> countDistinctDice(List<Integer> rolledDice) {
