@@ -16,7 +16,6 @@ import static java.util.stream.Collectors.toMap;
 
 public class YACHT implements CobolRunnable {
 
-  private final List<Integer> rolledDice = new ArrayList<>();
   private boolean initialized = false;
   private static final boolean cobolInitialized = false;
 
@@ -219,15 +218,21 @@ public class YACHT implements CobolRunnable {
   }
 
   private Map<Integer, Integer> countDistinctDice() {
+    List<Integer> rolledDice = getDiceRolls();
+
+    return rolledDice.stream().collect(groupingBy(r -> r))
+            .entrySet().stream().collect(toMap(e -> e.getKey(),
+                                               e -> e.getValue().size()));
+  }
+
+  private List<Integer> getDiceRolls() {
+    List<Integer> rolledDice = new ArrayList<>();
     for (int i = 0; i < 5; i++)
     {
       int dieRoll = b_WS_WORKING.getSubDataStorage(i).getByte(0) - '0';
       rolledDice.add(dieRoll);
     }
-
-    return rolledDice.stream().collect(groupingBy(r -> r))
-            .entrySet().stream().collect(toMap(e -> e.getKey(),
-                                               e -> e.getValue().size()));
+    return rolledDice;
   }
 
   public static void main(String[] args)
