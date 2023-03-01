@@ -156,12 +156,12 @@ public class YACHT implements CobolRunnable {
     // Invoke the scoring algorithm
     int score = score(diceRolls, categoryFromCobol);
 
+    // Convert the java score to COBOL
     CobolFieldAttribute a_4 = new CobolFieldAttribute(16, 2, 0, 0, null);
     CobolDataStorage b_WS_RESULT = new CobolDataStorage(2);    /* WS-RESULT */
     AbstractCobolField f_WS_RESULT = CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);    /* WS-RESULT */
-
-    // Convert the java score to COBOL
     f_WS_RESULT.setInt(score);
+
     return f_WS_RESULT;
   }
 }
