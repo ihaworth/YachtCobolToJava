@@ -33,7 +33,6 @@ public class YACHT implements CobolRunnable {
   private void initialize() {
     if (!this.initialized) {
       b_RETURN_CODE.set(0);
-      b_WS_DICE.fillBytes('0', 5);
       b_WS_CATEGORY.fillBytes(' ', 15);
       b_WS_RESULT.fillBytes ('0', 2);
       b_WS_WORKING.fillBytes('0', 15);
@@ -123,9 +122,9 @@ public class YACHT implements CobolRunnable {
                                                e -> e.getValue().size()));
   }
 
-  private List<Integer> getDiceRolls() {
+  private List<Integer> getDiceRolls(AbstractCobolField fWsDice) {
     /* YACHT.cobol:27: UNSTRING */
-    CobolString.unstringInit (f_WS_DICE, 0, 0);
+    CobolString.unstringInit (fWsDice, 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(0), a_2), 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(1), a_2), 0, 0);
     CobolString.unstringInto (CobolFieldFactory.makeCobolField(1, b_WS_WORKING.getSubDataStorage(2), a_2), 0, 0);
@@ -152,7 +151,6 @@ public class YACHT implements CobolRunnable {
     try {
       /* Data storage */
       b_RETURN_CODE = new CobolDataStorage(4);	/* RETURN-CODE */
-      b_WS_DICE = new CobolDataStorage(5);	/* WS-DICE */
       b_WS_CATEGORY = new CobolDataStorage(15);	/* WS-CATEGORY */
       b_WS_RESULT = new CobolDataStorage(2);	/* WS-RESULT */
       b_WS_WORKING = new CobolDataStorage(15);	/* WS-WORKING */
@@ -161,7 +159,6 @@ public class YACHT implements CobolRunnable {
       initAttr();
 
       /* Fields */
-      f_WS_DICE	= CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);	/* WS-DICE */
       f_WS_CATEGORY	= CobolFieldFactory.makeCobolField(15, b_WS_CATEGORY, a_3);	/* WS-CATEGORY */
       f_WS_RESULT	= CobolFieldFactory.makeCobolField(2, b_WS_RESULT, a_4);	/* WS-RESULT */
       /* End of fields */
@@ -181,15 +178,12 @@ public class YACHT implements CobolRunnable {
 
   /* Data storage */
   private CobolDataStorage b_RETURN_CODE;	/* RETURN-CODE */
-  private CobolDataStorage b_WS_DICE;	/* WS-DICE */
   private CobolDataStorage b_WS_CATEGORY;	/* WS-CATEGORY */
   private CobolDataStorage b_WS_RESULT;	/* WS-RESULT */
   private CobolDataStorage b_WS_WORKING;	/* WS-WORKING */
   /* End of data storage */
 
 
-  /* Fields */
-  private AbstractCobolField f_WS_DICE;	/* WS-DICE */
   private AbstractCobolField f_WS_CATEGORY;	/* WS-CATEGORY */
   private AbstractCobolField f_WS_RESULT;	/* WS-RESULT */
   /* End of fields */
@@ -203,6 +197,10 @@ public class YACHT implements CobolRunnable {
 
   public int score(String dice, String category) {
     // Initialise data
+    CobolDataStorage b_WS_DICE = new CobolDataStorage(5);    /* WS-DICE */
+    AbstractCobolField f_WS_DICE = CobolFieldFactory.makeCobolField(5, b_WS_DICE, a_1);    /* WS-DICE */
+    b_WS_DICE.fillBytes('0', 5);
+
     initialize();
 
     // Convert java test parameters to COBOL
@@ -210,7 +208,7 @@ public class YACHT implements CobolRunnable {
     b_WS_CATEGORY.memcpy(category, category.length());
 
     // Convert COBOL input parameters to java
-    List<Integer> diceRolls = getDiceRolls();
+    List<Integer> diceRolls = getDiceRolls(f_WS_DICE);
     String categoryFromCobol = this.f_WS_CATEGORY.getString().trim();
 
     // Invoke the scoring algorithm
